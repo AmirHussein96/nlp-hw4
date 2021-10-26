@@ -136,7 +136,7 @@ class EarleyChart:
 
         """Attach the next word to this item that ends at position, 
         if it matches what this item is looking for next."""
-     #   pdb.set_trace()
+       # pdb.set_trace()
         if position < len(self.tokens) and self.tokens[position] == item.next_symbol():
             new_item = item.with_dot_advanced()
             self.cols[position + 1].push(new_item)
@@ -145,6 +145,7 @@ class EarleyChart:
 
         
             node_item = Node(new_item,item.next_symbol(), position+1)
+            node_item.total_weight=0
             node_customer = Node(new_item,item.rule.lhs,position+1)
             self.add_to_graph(node_item, node_customer, position, position+1)
 
@@ -162,7 +163,7 @@ class EarleyChart:
                 self.profile["ATTACH"] += 1
                 # for rule in customer.rules:
                 # convert item to a node which we can update
-              #  pdb.set_trace()
+               # pdb.set_trace()
                 if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                     node_item = Node(item,item.rule.lhs, position)
                     node_customer = Node(new_item,new_item.rule.lhs, None)
@@ -234,7 +235,7 @@ class EarleyChart:
         if parent.name == self.grammar.start_symbol and len(self.tokens) == parent.end_position:
             if parent.total_weight < self.min_parse_weight:
                 self.min_parse_weight = parent.total_weight
-                #pdb.set_trace()
+              #  pdb.set_trace()
                 self.root = parent                  
 
 class Agenda:
@@ -474,6 +475,8 @@ def main():
                 logging.debug(f"Profile of work done: {chart.profile}")
                 if chart.accepted():
                     print(chart.root.total_weight)
+                else:
+                    print('NONE')
 
 
 if __name__ == "__main__":
