@@ -70,12 +70,12 @@ class EarleyChart:
         self.grammar = grammar
         self.progress = progress
         self.profile: CounterType[str] = Counter()
-
-        self.cols: List[Agenda]
-        self._run_earley()    # run Earley's algorithm to construct self.cols
         self.min_parse_weight = math.inf # Amir: start with inf weight
         self.best_attached = {} # dictionary of all the attached elements
         self.root = None
+        self.cols: List[Agenda]
+        self._run_earley()    # run Earley's algorithm to construct self.cols
+
 
     def accepted(self) -> bool:
         """Was the sentence accepted?
@@ -94,7 +94,7 @@ class EarleyChart:
         self.cols = [Agenda() for _ in range(len(self.tokens) + 1)]
 
         # Start looking for ROOT at position 0
-        pdb.set_trace()
+       # pdb.set_trace()
         self._predict(self.grammar.start_symbol, 0)
         
         # We'll go column by column, and within each column row by row.
@@ -112,7 +112,6 @@ class EarleyChart:
                 item = column.pop()   # dequeue the next unprocessed item
                 next = item.next_symbol()
                 if next is None:
-                    pdb.set_trace()
                     # Attach this complete constituent to its customers
                     logging.debug(f"{item} => ATTACH")
                     self._attach(item, i)   
@@ -134,13 +133,20 @@ class EarleyChart:
             self.profile["PREDICT"] += 1
 
     def _scan(self, item: Item, position: int) -> None:
+
         """Attach the next word to this item that ends at position, 
         if it matches what this item is looking for next."""
+     #   pdb.set_trace()
         if position < len(self.tokens) and self.tokens[position] == item.next_symbol():
             new_item = item.with_dot_advanced()
             self.cols[position + 1].push(new_item)
             logging.debug(f"\tScanned to get: {new_item} in column {position+1}")
             self.profile["SCAN"] += 1
+
+        
+            node_item = Node(new_item,item.next_symbol(), position+1)
+            node_customer = Node(new_item,item.rule.lhs,position+1)
+            self.add_to_graph(node_item, node_customer, position, position+1)
 
     def _attach(self, item: Item, position: int) -> None:
         """Attach this complete item to its customers in previous columns, advancing the
@@ -156,56 +162,79 @@ class EarleyChart:
                 self.profile["ATTACH"] += 1
                 # for rule in customer.rules:
                 # convert item to a node which we can update
-                node_item = Node(item)
-                node_customer = Node(customer)
-                
-                add_to_graph(node_item, node_customer, mid, position)
+              #  pdb.set_trace()
+                if (item.rule.lhs, item.start_position, position) not in self.best_attached:
+                    node_item = Node(item,item.rule.lhs, position)
+                    node_customer = Node(new_item,new_item.rule.lhs, None)
+                else:
+                    if item.rule.weight < self.best_attached[(item.rule.lhs,item.start_position,position)].weight: # check the minimum weight
+                        node_item = Node(item,item.rule.lhs, position)
+                        node_item.update_connections(self.best_attached[(item.rule.lhs,item.start_position,position)])
+                        node_customer = Node(new_item,new_item.rule.lhs, None)
+
+                    else:
+                        node_item = self.best_attached[(item.rule.lhs,item.start_position,position)] 
+                        node_customer = Node(new_item,new_item.rule.lhs, None)
+
+                    if node_customer.name in node_item.parents.keys():
+                        node_customer.update_connections(node_item.parents[node_customer.name])
+            
+                self.add_to_graph(node_item, node_customer, mid, position)
                 #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
    
     def add_to_graph(self, child, parent, startpos, endpos):
+      #  if parent.name == 'ROOT':
+      #      pdb.set_trace()
         if not self.grammar.is_nonterminal(child.name):
-            if (child, startpos, endpos) not in self.best_attached:
-                self.best_attached[(child,startpos,endpos)] = child  # key of triplet (X,I,J) and the coresponding cost to create it
-                child.parent = parent 
-            elif (child, startpos, endpos) in self.best_attached:
-                if child.weight < self.best_attached[(child,startpos,endpos)].weight: # check the minimum weight
-                    self.best_attached[(child,startpos,endpos)] = child
-                    child.parent = parent 
+            if (child.name, startpos, endpos) not in self.best_attached:
+                self.best_attached[(child.name,startpos,endpos)] = child  # key of triplet (X,I,J) and the coresponding cost to create it
+                child.add_parent(parent)
+            elif (child.name, startpos, endpos) in self.best_attached:
+                if child.weight < self.best_attached[(child.name,startpos,endpos)].weight: # check the minimum weight
+                    self.best_attached[(child.name,startpos,endpos)] = child
+                    child = self.best_attached[(child.name,startpos,endpos)] 
 
-            if child.dot_position == len(child.rule.rhs): # if the dot reached the end 
-                if (parent, startpos, endpos) not in self.best_attached:
-                    self.best_attached[(parent,startpos,endpos)] = parent 
+            if parent.dot_position == len(parent.rule.rhs): # if the dot reached the end 
+                if (parent.name, startpos, endpos) not in self.best_attached:
+                    self.best_attached[(parent.name,startpos,endpos)] = parent 
                 parent.add_children(child)
-                parent.total_weight+= parent.weight
-                parent.total_weight+= child.weight
+                #parent.total_weight+= parent.weight
+                parent.total_weight+= child.total_weight
                 parent.start_position = startpos
                 parent.end_position = endpos
         else:
-            if (child, startpos, endpos) not in self.best_attached:
-                self.best_attached[(child,startpos,endpos)] = child
-                child.parent = parent 
-                parent.total_weight+= child.weight
+            if (child.name, startpos, endpos) not in self.best_attached:
+                self.best_attached[(child.name,startpos,endpos)] = child
+                child.add_parent(parent) 
+                parent.total_weight+= child.total_weight
                 parent.add_children(child)
                 parent.start_position = startpos
 
-            elif (child, startpos, endpos) in self.best_attached:
-                if child.weight < self.best_attached[(child,startpos,endpos)].weight: # check the minimum weight
-                    self.best_attached[(child,startpos,endpos)] = child
-                    child.parent = parent 
-                    parent.total_weight+= child.weight
-                    parent.add_children(child)  
+            elif (child.name, startpos, endpos) in self.best_attached:
+                if child.weight < self.best_attached[(child.name,startpos,endpos)].weight: # check the minimum weight
+                    self.best_attached[(child.name,startpos,endpos)] = child
+                else:
+                    child = self.best_attached[(child.name,startpos,endpos)]
+               #child.parent = parent 
+                parent.total_weight+= child.total_weight
+                parent.add_children(child)  
                               
-        if child.dot_position == len(child.rule.rhs): # if the dot reached the end 
-            if (parent,parent.start_position , endpos) not in self.best_attached:
-                parent.total_weight+= parent.weight
+        if parent.dot_position == len(parent.rule.rhs): # if the dot reached the end 
+            if (parent.name,parent.start_position , endpos) not in self.best_attached:
+               # parent.total_weight+= parent.weight  # we start the total weight with the node rule weight, so no need to add again
                 parent.end_position = endpos
-                self.best_attached[(parent,parent.start_position,endpos)] = parent 
-            elif (parent,parent.start_position , endpos) in self.best_attached:
-                if parent.weight < self.best_attached[(parent,parent.start_position,endpos)].weight: # check the minimum weight
-                    self.best_attached[(parent,parent.start_position,endpos)] = parent
+                self.best_attached[(parent.name,parent.start_position,endpos)] = parent 
+            elif (parent.name,parent.start_position , endpos) in self.best_attached:
+                if parent.weight < self.best_attached[(parent.name,parent.start_position,endpos)].weight: # check the minimum weight
+                   # parent.total_weight+= parent.weight
+                    self.best_attached[(parent.name,parent.start_position,endpos)] = parent
+                else:
+                    parent = self.best_attached[(parent.name,parent.start_position,endpos)]
+                
         if parent.name == self.grammar.start_symbol and len(self.tokens) == parent.end_position:
-            if parent.weight < self.min_parse_weight:
-                self.min_parse_weight = parent.weight
+            if parent.total_weight < self.min_parse_weight:
+                self.min_parse_weight = parent.total_weight
+                #pdb.set_trace()
                 self.root = parent                  
 
 class Agenda:
@@ -355,24 +384,37 @@ class Rule:
         return f"{self.lhs} → {' '.join(self.rhs)}"
 
 class Node:
-    """An item in the Earley parse table, representing one or more subtrees
-    that could yield a particular substring."""
-    def __init__(self,item):
-        rule = item.rule
-        dot_position: item.dot_position
-        start_position: item.start_position
-        self.customer = None # the head/parent of the node
-        self.name = item.rule.lhs
-        self.total_weight =0
-            self.children = []
-            self.weight = item.rule.weight
-            if self.name == 'ROOT':
-                self.isroot = True
-            else:
-                self.isroot = False
+    """Node for parse graph"""
+    def __init__(self,item,name,end_position):
+        self.rule = item.rule
+        self.dot_position = item.dot_position
+        self.start_position = item.start_position
+        self.end_position = end_position
+        #self.customer = None # the head/parent of the node
+        self.name = name   # Amir: the head of the node
+        self.total_weight = item.rule.weight
+        self.children = []
+
+        self.parents = {}
+        self.weight = item.rule.weight
+        if self.name == 'ROOT':
+            self.isroot = True
+        else:
+            self.isroot = False
                 
     def add_children(self,node):
         self.children.append(node)
+
+    def add_parent(self,node):
+        self.parents[node.name]=node
+
+    def update_connections(self, item):
+        self.total_weight = item.total_weight
+        if item.children: # Amir: inherit all the children from item
+            self.children = item.children
+            
+        if item.parents:
+            self.parent = item.parent
     
 # We particularly want items to be immutable, since they will be hashed and 
 # used as keys in a dictionary (for duplicate detection).  
@@ -380,20 +422,9 @@ class Node:
 class Item:
     """An item in the Earley parse table, representing one or more subtrees
     that could yield a particular substring."""
-    def __init__(self,rule, dot_position, start_position, name, weight):
-        rule: Rule
-        dot_position: int
-        start_position: int
-        self.customer = None # the head/parent of the node
-            self.children = []
-            self.weight = weight
-            if self.name == 'ROOT':
-                self.isroot = True
-            else:
-                self.isroot = False
-                
-    def add_children(self,node):
-        self.children.append(node)
+    rule: Rule
+    dot_position: int
+    start_position: int
     # We don't store the end_position, which corresponds to the column
     # that the item is in, although you could store it redundantly for 
     # debugging purposes if you wanted.
@@ -409,6 +440,7 @@ class Item:
     def with_dot_advanced(self) -> Item:
         if self.next_symbol() is None:
             raise IndexError("Can't advance the dot past the end of the rule")
+             
         return Item(rule=self.rule, dot_position=self.dot_position + 1, start_position=self.start_position)
 
     def __repr__(self) -> str:
@@ -424,7 +456,7 @@ def main():
     # Parse the command-line arguments
     args = parse_args()
     logging.basicConfig(level=args.verbose)  # Set logging level appropriately
-    pdb.set_trace()
+   # pdb.set_trace()
     grammar = Grammar(args.start_symbol, args.grammar)
 
     with open(args.sentences) as f:
@@ -440,6 +472,8 @@ def main():
                     f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
                 )
                 logging.debug(f"Profile of work done: {chart.profile}")
+                if chart.accepted():
+                    print(chart.root.total_weight)
 
 
 if __name__ == "__main__":
