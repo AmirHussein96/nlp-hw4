@@ -73,7 +73,7 @@ class EarleyChart:
         self.cols: List[Agenda]
         self._run_earley()    # run Earley's algorithm to construct self.cols
 
-    def accepted(self) -> bool:
+    def accepted(self) -> float: # Don change this from bool to float to return weight
         """Was the sentence accepted?
         That is, does the finished chart contain an item corresponding to a parse of the sentence?
         This method answers the recognition question, but not the parsing question."""
@@ -81,8 +81,8 @@ class EarleyChart:
             if (item.rule.lhs == self.grammar.start_symbol   # a ROOT item in this column
                 and item.next_symbol() is None               # that is complete 
                 and item.start_position == 0):               # and started back at position 0
-                    return True
-        return False   # we didn't find any appropriate item
+                    return item.weight # Don change from True to item.weight
+        return 0 # Don changed from False to 0   # we didn't find any appropriate item
 
     def _run_earley(self) -> None:
         """Fill in the Earley chart"""
@@ -199,7 +199,7 @@ class Agenda:
         self._items: List[Item] = []       # list of all items that were *ever* pushed
         self._next = 0                     # index of first item that has not yet been popped
         self._index: Dict[Item, int] = {}  # stores index of an item if it has been pushed before
-        self._weight: Dict[Item, float] = {} # Don # store weight of each item in the agenda 
+#        self._weight: Dict[Item, float] = {} # Don # store weight of each item in the agenda 
         
         # Note: There are other possible designs.  For example, self._index doesn't really
         # have to store the index; it could be changed from a dictionary to a set.  
@@ -221,7 +221,7 @@ class Agenda:
             # read B.2 Reprocessing
             self._items.append(item)
             self._index[item] = len(self._items) - 1
-            self._weight[item] = item.rule.weight # Don # not sure if this or _weight is needed
+#            self._weight[item] = item.rule.weight # Don # not sure if this or _weight is needed
 
             
         
@@ -359,8 +359,10 @@ def main():
                 logging.debug(f"Parsing sentence: {sentence}")
                 chart = EarleyChart(sentence.split(), grammar, progress=args.progress)
                 # print the result
+                final_weight = chart.accepted()
                 print(
-                    f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
+f"'{sentence}' is {final_weight if (final_weight==0) else 'rejected'} by {args.grammar}" # Don
+# Don remove this print                    f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
                 )
                 logging.debug(f"Profile of work done: {chart.profile}")
 
