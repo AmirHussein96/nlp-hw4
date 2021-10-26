@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from collections import Counter
 from typing import Counter as CounterType, Iterable, List, Optional, Dict, Tuple
-
+import pdb
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments"""
@@ -90,6 +90,7 @@ class EarleyChart:
         self.cols = [Agenda() for _ in range(len(self.tokens) + 1)]
 
         # Start looking for ROOT at position 0
+        pdb.set_trace()
         self._predict(self.grammar.start_symbol, 0)
 
         # We'll go column by column, and within each column row by row.
@@ -105,8 +106,9 @@ class EarleyChart:
             logging.debug(f"Processing items in column {i}")
             while column:    # while agenda isn't empty
                 item = column.pop()   # dequeue the next unprocessed item
-                next = item.next_symbol();
+                next = item.next_symbol()
                 if next is None:
+                    pdb.set_trace()
                     # Attach this complete constituent to its customers
                     logging.debug(f"{item} => ATTACH")
                     self._attach(item, i)   
@@ -121,7 +123,7 @@ class EarleyChart:
 
     def _predict(self, nonterminal: str, position: int) -> None:
         """Start looking for this nonterminal at the given position."""
-        for rule in self.grammar.expansions(nonterminal):
+        for rule in self.grammar.expansions(nonterminal):   # this looks into all possibple rules for the nonterminal (need to check if this has been precessed for efficiency)
             new_item = Item(rule, dot_position=0, start_position=position)
             self.cols[position].push(new_item)
             logging.debug(f"\tPredicted: {new_item} in column {position}")
@@ -142,7 +144,7 @@ class EarleyChart:
         called "complete," but actually it attaches an item that was already complete.)
         """
         mid = item.start_position   # start position of this item = end position of item to its left
-        for customer in self.cols[mid].all():  # could you eliminate this inefficient linear search?
+        for customer in self.cols[mid].all():  # could you eliminate this inefficient linear search? # this searches for all items in the column
             if customer.next_symbol() == item.rule.lhs:
                 new_item = customer.with_dot_advanced()
                 self.cols[position].push(new_item)
@@ -336,7 +338,7 @@ def main():
     # Parse the command-line arguments
     args = parse_args()
     logging.basicConfig(level=args.verbose)  # Set logging level appropriately
-
+    pdb.set_trace()
     grammar = Grammar(args.start_symbol, args.grammar)
 
     with open(args.sentences) as f:

@@ -17,7 +17,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from collections import Counter
 from typing import Counter as CounterType, Iterable, List, Optional, Dict, Tuple
-
+import math
+import pdb
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments"""
@@ -72,6 +73,9 @@ class EarleyChart:
 
         self.cols: List[Agenda]
         self._run_earley()    # run Earley's algorithm to construct self.cols
+        self.min_parse_weight = math.inf # Amir: start with inf weight
+        self.best_attached = {} # dictionary of all the attached elements
+        self.root = None
 
     def accepted(self) -> bool:
         """Was the sentence accepted?
@@ -90,8 +94,9 @@ class EarleyChart:
         self.cols = [Agenda() for _ in range(len(self.tokens) + 1)]
 
         # Start looking for ROOT at position 0
+        pdb.set_trace()
         self._predict(self.grammar.start_symbol, 0)
-
+        
         # We'll go column by column, and within each column row by row.
         # Processing earlier entries in the column may extend the column
         # with later entries, which will be processed as well.
@@ -105,8 +110,9 @@ class EarleyChart:
             logging.debug(f"Processing items in column {i}")
             while column:    # while agenda isn't empty
                 item = column.pop()   # dequeue the next unprocessed item
-                next = item.next_symbol();
+                next = item.next_symbol()
                 if next is None:
+                    pdb.set_trace()
                     # Attach this complete constituent to its customers
                     logging.debug(f"{item} => ATTACH")
                     self._attach(item, i)   
@@ -121,8 +127,8 @@ class EarleyChart:
 
     def _predict(self, nonterminal: str, position: int) -> None:
         """Start looking for this nonterminal at the given position."""
-        for rule in self.grammar.expansions(nonterminal):
-            new_item = Item(rule, dot_position=0, start_position=position)
+        for rule in self.grammar.expansions(nonterminal):   # this looks into all possibple rules for the nonterminal (need to check if this has been precessed for efficiency)
+            new_item = Item(rule, dot_position=0, start_position=position)     
             self.cols[position].push(new_item)
             logging.debug(f"\tPredicted: {new_item} in column {position}")
             self.profile["PREDICT"] += 1
@@ -142,13 +148,65 @@ class EarleyChart:
         called "complete," but actually it attaches an item that was already complete.)
         """
         mid = item.start_position   # start position of this item = end position of item to its left
-        for customer in self.cols[mid].all():  # could you eliminate this inefficient linear search?
+        for customer in self.cols[mid].all():  # could you eliminate this inefficient linear search? # this searches for all items in the column
             if customer.next_symbol() == item.rule.lhs:
                 new_item = customer.with_dot_advanced()
                 self.cols[position].push(new_item)
                 logging.debug(f"\tAttached to get: {new_item} in column {position}")
                 self.profile["ATTACH"] += 1
+                # for rule in customer.rules:
+                # convert item to a node which we can update
+                node_item = Node(item)
+                node_customer = Node(customer)
+                
+                add_to_graph(node_item, node_customer, mid, position)
+                #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
+   
+    def add_to_graph(self, child, parent, startpos, endpos):
+        if not self.grammar.is_nonterminal(child.name):
+            if (child, startpos, endpos) not in self.best_attached:
+                self.best_attached[(child,startpos,endpos)] = child  # key of triplet (X,I,J) and the coresponding cost to create it
+                child.parent = parent 
+            elif (child, startpos, endpos) in self.best_attached:
+                if child.weight < self.best_attached[(child,startpos,endpos)].weight: # check the minimum weight
+                    self.best_attached[(child,startpos,endpos)] = child
+                    child.parent = parent 
 
+            if child.dot_position == len(child.rule.rhs): # if the dot reached the end 
+                if (parent, startpos, endpos) not in self.best_attached:
+                    self.best_attached[(parent,startpos,endpos)] = parent 
+                parent.add_children(child)
+                parent.total_weight+= parent.weight
+                parent.total_weight+= child.weight
+                parent.start_position = startpos
+                parent.end_position = endpos
+        else:
+            if (child, startpos, endpos) not in self.best_attached:
+                self.best_attached[(child,startpos,endpos)] = child
+                child.parent = parent 
+                parent.total_weight+= child.weight
+                parent.add_children(child)
+                parent.start_position = startpos
+
+            elif (child, startpos, endpos) in self.best_attached:
+                if child.weight < self.best_attached[(child,startpos,endpos)].weight: # check the minimum weight
+                    self.best_attached[(child,startpos,endpos)] = child
+                    child.parent = parent 
+                    parent.total_weight+= child.weight
+                    parent.add_children(child)  
+                              
+        if child.dot_position == len(child.rule.rhs): # if the dot reached the end 
+            if (parent,parent.start_position , endpos) not in self.best_attached:
+                parent.total_weight+= parent.weight
+                parent.end_position = endpos
+                self.best_attached[(parent,parent.start_position,endpos)] = parent 
+            elif (parent,parent.start_position , endpos) in self.best_attached:
+                if parent.weight < self.best_attached[(parent,parent.start_position,endpos)].weight: # check the minimum weight
+                    self.best_attached[(parent,parent.start_position,endpos)] = parent
+        if parent.name == self.grammar.start_symbol and len(self.tokens) == parent.end_position:
+            if parent.weight < self.min_parse_weight:
+                self.min_parse_weight = parent.weight
+                self.root = parent                  
 
 class Agenda:
     """An agenda of items that need to be processed.  Newly built items 
@@ -296,6 +354,25 @@ class Rule:
         """Complete string used to show this rule instance at the command line"""
         return f"{self.lhs} → {' '.join(self.rhs)}"
 
+class Node:
+    """An item in the Earley parse table, representing one or more subtrees
+    that could yield a particular substring."""
+    def __init__(self,item):
+        rule = item.rule
+        dot_position: item.dot_position
+        start_position: item.start_position
+        self.customer = None # the head/parent of the node
+        self.name = item.rule.lhs
+        self.total_weight =0
+            self.children = []
+            self.weight = item.rule.weight
+            if self.name == 'ROOT':
+                self.isroot = True
+            else:
+                self.isroot = False
+                
+    def add_children(self,node):
+        self.children.append(node)
     
 # We particularly want items to be immutable, since they will be hashed and 
 # used as keys in a dictionary (for duplicate detection).  
@@ -303,9 +380,20 @@ class Rule:
 class Item:
     """An item in the Earley parse table, representing one or more subtrees
     that could yield a particular substring."""
-    rule: Rule
-    dot_position: int
-    start_position: int
+    def __init__(self,rule, dot_position, start_position, name, weight):
+        rule: Rule
+        dot_position: int
+        start_position: int
+        self.customer = None # the head/parent of the node
+            self.children = []
+            self.weight = weight
+            if self.name == 'ROOT':
+                self.isroot = True
+            else:
+                self.isroot = False
+                
+    def add_children(self,node):
+        self.children.append(node)
     # We don't store the end_position, which corresponds to the column
     # that the item is in, although you could store it redundantly for 
     # debugging purposes if you wanted.
@@ -336,7 +424,7 @@ def main():
     # Parse the command-line arguments
     args = parse_args()
     logging.basicConfig(level=args.verbose)  # Set logging level appropriately
-
+    pdb.set_trace()
     grammar = Grammar(args.start_symbol, args.grammar)
 
     with open(args.sentences) as f:
