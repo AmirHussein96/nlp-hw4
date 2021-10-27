@@ -146,7 +146,7 @@ class EarleyChart:
             self.profile["SCAN"] += 1
 
             if  (new_item.start_position,str(new_item.rule)) in self.tobe_attached:
-            #    pdb.set_trace()
+                # pdb.set_trace()
                 self.tobe_attached[(new_item.start_position,str(new_item.rule))].dot_position = new_item.dot_position
                 if new_item.dot_position == len(new_item.rule.rhs):
                     node_item = self.tobe_attached[(new_item.start_position,str(new_item.rule))]
@@ -176,23 +176,24 @@ class EarleyChart:
                 self.profile["ATTACH"] += 1
                 # for rule in customer.rules:
                 # convert item to a node which we can update
-               # if customer.rule.lhs =='FACTOR' and customer.start_position==6:
-               #     pdb.set_trace()
+                pdb.set_trace()
+              #  if customer.rule.lhs =='FACTOR' and customer.start_position==6:
+                    #pdb.set_trace()
                 if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                     node_item = Node(item,item.rule.lhs, position)
-                    node_customer = self.get_parent(new_item, position)
+                    node_customer = self.get_parent(new_item, position,node_item)
                 else:
                     if item.rule.weight < self.best_attached[(item.rule.lhs,item.start_position,position)].weight: # check the minimum weight
                         node_item = Node(item,item.rule.lhs, position)
                         node_item.update_connections(self.best_attached[(item.rule.lhs,item.start_position,position)])
-                        node_customer = self.get_parent(new_item, position)
+                        node_customer = self.get_parent(new_item, position,node_item)
 
                     else:
                         node_item = self.best_attached[(item.rule.lhs,item.start_position,position)] 
-                        node_customer = self.get_parent(new_item, position)
+                        node_customer = self.get_parent(new_item, position,node_item)
                 self.add_to_graph(node_item, node_customer, mid, position)
                 #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
-    def get_parent(self, customer, end_position):
+    def get_parent(self, customer, end_position,child):
         if customer.dot_position < len(customer.rule.rhs) and (customer.start_position,str(customer.rule)) not in self.tobe_attached:
             node_customer = Node(customer,customer.rule.lhs, None)
             self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
@@ -200,10 +201,15 @@ class EarleyChart:
             node_customer = Node(customer,customer.rule.lhs, None)
             self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
             return node_customer
-        else:
+        elif (customer.start_position,str(customer.rule)) in self.tobe_attached:
             node_customer = self.tobe_attached[(customer.start_position,str(customer.rule))]
-           
-            node_customer.dot_position = customer.dot_position
+            if child.start_position == node_customer.children[0].start_position and end_position > node_customer.children[0].end_position:  # this means overlap
+                node_customer.total_weight-= node_customer.children[0].total_weight
+                node_customer.children.pop()
+                self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
+            else:
+                node_customer.dot_position = customer.dot_position
+                self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
         return node_customer
     
 
@@ -443,7 +449,11 @@ class Node:
             
         if item.parents:
             self.parent = item.parent
-    
+
+    def print_children(self):
+        for child in self.children:
+            print('child: ', child.name, ' with rule: ', child.start_position, '-' , child.end_position , child.rule)
+
 # We particularly want items to be immutable, since they will be hashed and 
 # used as keys in a dictionary (for duplicate detection).  
 @dataclass(frozen=True)
