@@ -137,19 +137,30 @@ class EarleyChart:
 
         """Attach the next word to this item that ends at position, 
         if it matches what this item is looking for next."""
-      #  pdb.set_trace()
+       # pdb.set_trace()
+        #print(item.next_symbol())
         if position < len(self.tokens) and self.tokens[position] == item.next_symbol():
             new_item = item.with_dot_advanced()
             self.cols[position + 1].push(new_item)
             logging.debug(f"\tScanned to get: {new_item} in column {position+1}")
             self.profile["SCAN"] += 1
 
-        
-            node_item = Node(new_item,item.next_symbol(), position+1)
-            node_item.total_weight=0
-            node_item.weight=0
-            node_customer = Node(new_item,item.rule.lhs,position+1)
-            self.add_to_graph(node_item, node_customer, position, position+1)
+            if  (new_item.start_position,str(new_item.rule)) in self.tobe_attached:
+            #    pdb.set_trace()
+                self.tobe_attached[(new_item.start_position,str(new_item.rule))].dot_position = new_item.dot_position
+                if new_item.dot_position == len(new_item.rule.rhs):
+                    node_item = self.tobe_attached[(new_item.start_position,str(new_item.rule))]
+                    self.best_attached[(node_item.name,node_item.start_position,position+1)] = node_item 
+            elif new_item.dot_position == len(new_item.rule.rhs) and len(new_item.rule.rhs) == 1: # add the unary rules to the graph
+                    node_customer = Node(new_item,item.rule.lhs,position+1)
+                    self.best_attached[(node_customer.name,node_customer.start_position,position+1)] = node_customer 
+
+            # else:
+            #     node_item = Node(new_item,item.next_symbol(), position+1)
+            #     node_item.total_weight=0
+            #     node_item.weight=0
+            #     node_customer = Node(new_item,item.rule.lhs,position+1)
+            #     self.add_to_graph(node_item, node_customer, position, position+1)
 
     def _attach(self, item: Item, position: int) -> None:
         """Attach this complete item to its customers in previous columns, advancing the
@@ -165,7 +176,8 @@ class EarleyChart:
                 self.profile["ATTACH"] += 1
                 # for rule in customer.rules:
                 # convert item to a node which we can update
-            #    pdb.set_trace()
+               # if customer.rule.lhs =='FACTOR' and customer.start_position==6:
+               #     pdb.set_trace()
                 if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                     node_item = Node(item,item.rule.lhs, position)
                     node_customer = self.get_parent(new_item, position)
@@ -190,6 +202,7 @@ class EarleyChart:
             return node_customer
         else:
             node_customer = self.tobe_attached[(customer.start_position,str(customer.rule))]
+           
             node_customer.dot_position = customer.dot_position
         return node_customer
     
@@ -212,7 +225,6 @@ class EarleyChart:
                     self.best_attached[(parent.name,startpos,endpos)] = parent 
                 parent.add_children(child)
                 #parent.total_weight+= parent.weight
-                parent.start_position = startpos
                 parent.end_position = endpos
         else:
             if (child.name, startpos, endpos) not in self.best_attached:
@@ -220,7 +232,6 @@ class EarleyChart:
                 child.add_parent(parent) 
                 parent.total_weight+= child.total_weight
                 parent.add_children(child)
-                parent.start_position = startpos
 
             elif (child.name, startpos, endpos) in self.best_attached:
                 if child.weight < self.best_attached[(child.name,startpos,endpos)].weight: # check the minimum weight
@@ -235,20 +246,23 @@ class EarleyChart:
             if (parent.name,parent.start_position , endpos) not in self.best_attached:
                # parent.total_weight+= parent.weight  # we start the total weight with the node rule weight, so no need to add again
                 parent.end_position = endpos
+              #  pdb.set_trace()
                 self.best_attached[(parent.name,parent.start_position,endpos)] = parent 
+                del self.tobe_attached[(parent.start_position,str(parent.rule))] # remove from temporary dict
             elif (parent.name,parent.start_position , endpos) in self.best_attached:
                 if parent.weight < self.best_attached[(parent.name,parent.start_position,endpos)].weight: # check the minimum weight
                    # parent.total_weight+= parent.weight
                     self.best_attached[(parent.name,parent.start_position,endpos)] = parent
                 else:
                     parent = self.best_attached[(parent.name,parent.start_position,endpos)]
+                    
             if (parent.name,parent.start_position,endpos) in self.tobe_attached:
                 del self.tobe_attached[(parent.start_position,str(parent.rule))] # remove from temporary dict
                 
         if parent.name == self.grammar.start_symbol and len(self.tokens) == parent.end_position:
             if parent.total_weight < self.min_parse_weight:
                 self.min_parse_weight = parent.total_weight
-              #  pdb.set_trace()
+               # pdb.set_trace()
                 self.root = parent                  
 
 class Agenda:
