@@ -72,6 +72,7 @@ class EarleyChart:
         self.profile: CounterType[str] = Counter()
         self.min_parse_weight = math.inf # Amir: start with inf weight
         self.best_attached = {} # dictionary of all the attached elements
+        self.tobe_attached = {} # dictionary of possible parents for attachment
         self.root = None
         self.cols: List[Agenda]
         self._run_earley()    # run Earley's algorithm to construct self.cols
@@ -136,7 +137,7 @@ class EarleyChart:
 
         """Attach the next word to this item that ends at position, 
         if it matches what this item is looking for next."""
-       # pdb.set_trace()
+      #  pdb.set_trace()
         if position < len(self.tokens) and self.tokens[position] == item.next_symbol():
             new_item = item.with_dot_advanced()
             self.cols[position + 1].push(new_item)
@@ -146,6 +147,7 @@ class EarleyChart:
         
             node_item = Node(new_item,item.next_symbol(), position+1)
             node_item.total_weight=0
+            node_item.weight=0
             node_customer = Node(new_item,item.rule.lhs,position+1)
             self.add_to_graph(node_item, node_customer, position, position+1)
 
@@ -163,26 +165,36 @@ class EarleyChart:
                 self.profile["ATTACH"] += 1
                 # for rule in customer.rules:
                 # convert item to a node which we can update
-               # pdb.set_trace()
+            #    pdb.set_trace()
                 if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                     node_item = Node(item,item.rule.lhs, position)
-                    node_customer = Node(new_item,new_item.rule.lhs, None)
+                    node_customer = self.get_parent(new_item, position)
                 else:
                     if item.rule.weight < self.best_attached[(item.rule.lhs,item.start_position,position)].weight: # check the minimum weight
                         node_item = Node(item,item.rule.lhs, position)
                         node_item.update_connections(self.best_attached[(item.rule.lhs,item.start_position,position)])
-                        node_customer = Node(new_item,new_item.rule.lhs, None)
+                        node_customer = self.get_parent(new_item, position)
 
                     else:
                         node_item = self.best_attached[(item.rule.lhs,item.start_position,position)] 
-                        node_customer = Node(new_item,new_item.rule.lhs, None)
-
-                    if node_customer.name in node_item.parents.keys():
-                        node_customer.update_connections(node_item.parents[node_customer.name])
-            
+                        node_customer = self.get_parent(new_item, position)
                 self.add_to_graph(node_item, node_customer, mid, position)
                 #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
-   
+    def get_parent(self, customer, end_position):
+        if customer.dot_position < len(customer.rule.rhs) and (customer.start_position,str(customer.rule)) not in self.tobe_attached:
+            node_customer = Node(customer,customer.rule.lhs, None)
+            self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
+        elif (customer.start_position,str(customer.rule)) not in self.tobe_attached:
+            node_customer = Node(customer,customer.rule.lhs, None)
+            self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
+            return node_customer
+        else:
+            node_customer = self.tobe_attached[(customer.start_position,str(customer.rule))]
+            node_customer.dot_position = customer.dot_position
+        return node_customer
+    
+
+
     def add_to_graph(self, child, parent, startpos, endpos):
       #  if parent.name == 'ROOT':
       #      pdb.set_trace()
@@ -200,7 +212,6 @@ class EarleyChart:
                     self.best_attached[(parent.name,startpos,endpos)] = parent 
                 parent.add_children(child)
                 #parent.total_weight+= parent.weight
-                parent.total_weight+= child.total_weight
                 parent.start_position = startpos
                 parent.end_position = endpos
         else:
@@ -231,6 +242,8 @@ class EarleyChart:
                     self.best_attached[(parent.name,parent.start_position,endpos)] = parent
                 else:
                     parent = self.best_attached[(parent.name,parent.start_position,endpos)]
+            if (parent.name,parent.start_position,endpos) in self.tobe_attached:
+                del self.tobe_attached[(parent.start_position,str(parent.rule))] # remove from temporary dict
                 
         if parent.name == self.grammar.start_symbol and len(self.tokens) == parent.end_position:
             if parent.total_weight < self.min_parse_weight:
@@ -410,7 +423,7 @@ class Node:
         self.parents[node.name]=node
 
     def update_connections(self, item):
-        self.total_weight = item.total_weight
+        self.total_weight = item.total_weight - item.rule.weight + self.weight
         if item.children: # Amir: inherit all the children from item
             self.children = item.children
             
