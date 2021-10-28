@@ -19,6 +19,7 @@ from collections import Counter
 from typing import Counter as CounterType, Iterable, List, Optional, Dict, Tuple
 import math
 import pdb
+import os
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments"""
@@ -76,6 +77,7 @@ class EarleyChart:
         self.root = None
         self.cols: List[Agenda]
         self._run_earley()    # run Earley's algorithm to construct self.cols
+        self.traverse_output = "" # Don string for printing
 
 
     def accepted(self) -> bool:
@@ -86,7 +88,7 @@ class EarleyChart:
             if (item.rule.lhs == self.grammar.start_symbol   # a ROOT item in this column
                 and item.next_symbol() is None               # that is complete 
                 and item.start_position == 0):               # and started back at position 0
-                    return True
+                    return self.root
         return False   # we didn't find any appropriate item
 
     def _run_earley(self) -> None:
@@ -109,6 +111,7 @@ class EarleyChart:
                                    disable=not self.progress):
             logging.debug("")
             logging.debug(f"Processing items in column {i}")
+            
             while column:    # while agenda isn't empty
                 item = column.pop()   # dequeue the next unprocessed item
                 next = item.next_symbol()
@@ -211,22 +214,34 @@ class EarleyChart:
         elif (customer.start_position, str(customer.rule)) in self.tobe_attached:
             node_customer = self.tobe_attached[(customer.start_position, str(customer.rule))]
             node_customer.dot_position = customer.dot_position
-            if node_customer.children[0].end_position > child.start_position and child.start_position != node_customer.children[0].start_position:
-                new_ch_end = node_customer.children[0].end_position-(node_customer.children[0].end_position - child.start_position) -1
-               # detach the child
-               # print(self.best_attached)
-               # print(node_customer.start_position, node_customer.children[0].end_position, node_customer.rule)
-               # pdb.set_trace()
-                if (node_customer.name,node_customer.start_position,new_ch_end) in self.best_attached:
-                    node_customer.total_weight = node_customer.total_weight - node_customer.children[0].total_weight
-                    node_customer.children.pop()
-
-                    node_customer.children.append(self.best_attached[(node_customer.name,node_customer.start_position,new_ch_end)])
-                    node_customer.total_weight = node_customer.total_weight + node_customer.children[0].total_weight
-
+            if node_customer.children[0].end_position is not None:
+                if node_customer.children[0].end_position > child.start_position and child.start_position != node_customer.children[0].start_position:
+                    new_ch_end = node_customer.children[0].end_position-(node_customer.children[0].end_position - child.start_position) -1
+                   # detach the child
+                   # print(self.best_attached)
+                   # print(node_customer.start_position, node_customer.children[0].end_position, node_customer.rule)
+                   # pdb.set_trace()
+                    if (node_customer.name,node_customer.start_position,new_ch_end) in self.best_attached:
+                        node_customer.total_weight = node_customer.total_weight - node_customer.children[0].total_weight
+                        node_customer.children.pop()
+    
+                        node_customer.children.append(self.best_attached[(node_customer.name,node_customer.start_position,new_ch_end)])
+                        node_customer.total_weight = node_customer.total_weight + node_customer.children[0].total_weight
+    
+                else:
+                    if child.end_position is not None:
+                        if child.start_position == node_customer.children[0].start_position and child.end_position > node_customer.children[0].end_position:  # this means overlap
+                            node_customer.total_weight-= node_customer.children[0].total_weight
+                            node_customer.children.pop()
+                            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                        else:
+                            node_customer.dot_position = customer.dot_position
+                            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                    else:
+                        node_customer.dot_position = customer.dot_position
+                        self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
             else:
-                
-                if child.start_position == node_customer.children[0].start_position and child.end_position > node_customer.children[0].end_position:  # this means overlap
+                if child.start_position == node_customer.children[0].start_position: # and child.end_position > node_customer.children[0].end_position:  # this means overlap
                     node_customer.total_weight-= node_customer.children[0].total_weight
                     node_customer.children.pop()
                     self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
@@ -294,6 +309,31 @@ class EarleyChart:
                 self.min_parse_weight = parent.total_weight
                # pdb.set_trace()
                 self.root = parent                  
+                
+    
+    def traverse(self, node, position):
+        if len(self.traverse_output) > 0 and self.traverse_output[-1] == ")":
+            self.traverse_output += " "
+        self.traverse_output = self.traverse_output + "(" + node.name + " "
+        # Don dictionary of children for printing tree
+        for child in node.children:
+            node.child_dict[child.start_position] = (child, child.end_position)
+
+        node.print_loc
+        for thing in node.rule.rhs:
+            # pdb.set_trace()
+            if not self.grammar.is_nonterminal(thing):
+                self.traverse_output += thing
+                node.print_loc += 1
+            else:
+           #     pdb.set_trace()
+                self.traverse(node.child_dict[node.print_loc][0], node.print_loc)
+                node.print_loc = node.child_dict[node.print_loc][1]
+        
+        self.traverse_output += ")"
+        return self.traverse_output
+    
+    
 
 class Agenda:
     """An agenda of items that need to be processed.  Newly built items 
@@ -458,6 +498,8 @@ class Node:
             self.isroot = True
         else:
             self.isroot = False
+        self.child_dict = {} # Don dictionary of children for printing tree
+        self.print_loc = self.start_position # Don keep track of printing
                 
     def add_children(self,node):
         self.children.append(node)
@@ -528,11 +570,14 @@ def main():
                 logging.debug(f"Parsing sentence: {sentence}")
                 chart = EarleyChart(sentence.split(), grammar, progress=args.progress)
                 # print the result
-                print(
-                    f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
-                )
+                # print(
+                #     f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
+                # )
                 logging.debug(f"Profile of work done: {chart.profile}")
                 if chart.accepted():
+                    tree_parse = chart.traverse(chart.accepted(), 0)
+                    t = os.system(f"echo '{tree_parse}' | ./prettyprint")
+                    print(t)
                     print(chart.root.total_weight)
                 else:
                     print('NONE')
