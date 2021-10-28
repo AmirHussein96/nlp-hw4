@@ -19,6 +19,7 @@ from collections import Counter
 from typing import Counter as CounterType, Iterable, List, Optional, Dict, Tuple
 import math
 import pdb
+import os
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments"""
@@ -587,10 +588,11 @@ def main():
                 )
                 logging.debug(f"Profile of work done: {chart.profile}")
                 if chart.accepted():
+                    # chart.traverse_test(chart.accepted(), 2)
+                    tree_parse = chart.traverse(chart.accepted(), 0)
+                    t = os.system(f"echo '{tree_parse}' | ./prettyprint") #doesn't work on windows?
+                    print(t)
                     print(chart.root.total_weight)
-                    chart.traverse_test(chart.accepted(), 2)
-                    # tree_parse = chart.traverse(chart.accepted(), 0)
-                    # print(tree_parse)
                 else:
                     print('NONE')
 
