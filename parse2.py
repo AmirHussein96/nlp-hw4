@@ -590,8 +590,7 @@ def main():
                 if chart.accepted():
                     # chart.traverse_test(chart.accepted(), 2)
                     tree_parse = chart.traverse(chart.accepted(), 0)
-                    t = tree_parse
-                    # t = os.system(f"echo '{tree_parse}' | ./prettyprint") #doesn't work on windows?
+                    t = os.system(f"echo '{tree_parse}' | ./prettyprint") #doesn't work on windows?
                     print(t)
                     print(chart.root.total_weight)
                 else:
