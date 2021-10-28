@@ -341,7 +341,8 @@ class EarleyChart:
         if position == 0:
             return
         print(node.rule)
-        print(node.children)
+        
+        # print(node.children)
         
         for i, child in enumerate(node.children):
             
@@ -588,10 +589,10 @@ def main():
                 # )
                 logging.debug(f"Profile of work done: {chart.profile}")
                 if chart.accepted():
-                    # chart.traverse_test(chart.accepted(), 2)
-                    tree_parse = chart.traverse(chart.accepted(), 0)
-                    t = os.system(f"echo '{tree_parse}' | ./prettyprint") #doesn't work on windows?
-                    print(t)
+                    chart.traverse_test(chart.accepted(), 5)
+                    # tree_parse = chart.traverse(chart.accepted(), 0)
+                    # t = os.system(f"echo '{tree_parse}' | ./prettyprint") #doesn't work on windows?
+                    # print(t)
                     print(chart.root.total_weight)
                 else:
                     print('NONE')
