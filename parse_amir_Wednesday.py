@@ -110,6 +110,10 @@ class EarleyChart:
                                    disable=not self.progress):
             logging.debug("")
             logging.debug(f"Processing items in column {i}")
+
+            # keep track of LHS elements we ahve already predicted to avoid repredicting
+            predicted_lhss = [] # E1 speedup
+            
             while column:    # while agenda isn't empty
                 item = column.pop()   # dequeue the next unprocessed item
                 next = item.next_symbol()
@@ -118,9 +122,11 @@ class EarleyChart:
                     logging.debug(f"{item} => ATTACH")
                     self._attach(item, i)   
                 elif self.grammar.is_nonterminal(next):
-                    # Predict the nonterminal after the dot
-                    logging.debug(f"{item} => PREDICT")
-                    self._predict(next, i)
+                    if next not in predicted_lhss: # E1 speedup
+                        # Predict the nonterminal after the dot
+                        logging.debug(f"{item} => PREDICT")
+                        self._predict(next, i)
+                        predicted_lhss.append(next)
                 else:
                     # Try to scan the terminal after the dot
                     logging.debug(f"{item} => SCAN")
@@ -147,7 +153,7 @@ class EarleyChart:
             self.profile["SCAN"] += 1
 
             if  (new_item.start_position,str(new_item.rule)) in self.tobe_attached:
-                # pdb.set_trace()
+            #    pdb.set_trace()
                 self.tobe_attached[(new_item.start_position,str(new_item.rule))].dot_position = new_item.dot_position
                 if new_item.dot_position == len(new_item.rule.rhs):
                     node_item = self.tobe_attached[(new_item.start_position,str(new_item.rule))]
@@ -177,24 +183,23 @@ class EarleyChart:
                 self.profile["ATTACH"] += 1
                 # for rule in customer.rules:
                 # convert item to a node which we can update
-#Don                pdb.set_trace()
-              #  if customer.rule.lhs =='FACTOR' and customer.start_position==6:
-                    #pdb.set_trace()
+                # if customer.rule.lhs =='FACTOR' and customer.start_position==6:
+                #     pdb.set_trace()
                 if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                     node_item = Node(item,item.rule.lhs, position)
-                    node_customer = self.get_parent(new_item, position,node_item)
+                    node_customer = self.get_parent(new_item, position)
                 else:
                     if item.rule.weight < self.best_attached[(item.rule.lhs,item.start_position,position)].weight: # check the minimum weight
                         node_item = Node(item,item.rule.lhs, position)
                         node_item.update_connections(self.best_attached[(item.rule.lhs,item.start_position,position)])
-                        node_customer = self.get_parent(new_item, position,node_item)
+                        node_customer = self.get_parent(new_item, position)
 
                     else:
                         node_item = self.best_attached[(item.rule.lhs,item.start_position,position)] 
-                        node_customer = self.get_parent(new_item, position,node_item)
+                        node_customer = self.get_parent(new_item, position)
                 self.add_to_graph(node_item, node_customer, mid, position)
                 #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
-    def get_parent(self, customer, end_position,child):
+    def get_parent(self, customer, end_position):
         if customer.dot_position < len(customer.rule.rhs) and (customer.start_position,str(customer.rule)) not in self.tobe_attached:
             node_customer = Node(customer,customer.rule.lhs, None)
             self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
@@ -202,15 +207,10 @@ class EarleyChart:
             node_customer = Node(customer,customer.rule.lhs, None)
             self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
             return node_customer
-        elif (customer.start_position,str(customer.rule)) in self.tobe_attached:
+        else:
             node_customer = self.tobe_attached[(customer.start_position,str(customer.rule))]
-            if child.start_position == node_customer.children[0].start_position and end_position > node_customer.children[0].end_position:  # this means overlap
-                node_customer.total_weight-= node_customer.children[0].total_weight
-                node_customer.children.pop()
-                self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
-            else:
-                node_customer.dot_position = customer.dot_position
-                self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
+           
+            node_customer.dot_position = customer.dot_position
         return node_customer
     
 
@@ -270,9 +270,9 @@ class EarleyChart:
             if parent.total_weight < self.min_parse_weight:
                 self.min_parse_weight = parent.total_weight
                # pdb.set_trace()
-                self.root = parent
-                
-    
+                self.root = parent                  
+
+
     def traverse(self, node, position):
         if len(self.traverse_output) > 0 and self.traverse_output[-1] == ")":
             self.traverse_output += " "
@@ -294,8 +294,8 @@ class EarleyChart:
         
         self.traverse_output += ")"
         return self.traverse_output
-    
-    
+
+
 
 class Agenda:
     """An agenda of items that need to be processed.  Newly built items 
@@ -461,8 +461,9 @@ class Node:
             self.isroot = True
         else:
             self.isroot = False
-        self.child_dict = {} # Don dictionary of children for printing tree
-        self.print_loc = self.start_position # Don keep track of printing
+        # Don dictionary of children for printing tree
+        self.child_dict = {}
+        self.print_loc = self.start_position
                 
     def add_children(self,node):
         self.children.append(node)
@@ -477,11 +478,7 @@ class Node:
             
         if item.parents:
             self.parent = item.parent
-
-    def print_children(self):
-        for child in self.children:
-            print('child: ', child.name, ' with rule: ', child.start_position, '-' , child.end_position , child.rule)
-
+    
 # We particularly want items to be immutable, since they will be hashed and 
 # used as keys in a dictionary (for duplicate detection).  
 @dataclass(frozen=True)
@@ -540,9 +537,8 @@ def main():
                 logging.debug(f"Profile of work done: {chart.profile}")
                 if chart.accepted():
                     print(chart.root.total_weight)
-                    # not printing right now: some bug to fix
-                    #tree_parse = chart.traverse(chart.accepted(), 0)
-                    #print(tree_parse)
+                    tree_parse = chart.traverse(chart.accepted(), 0)
+                    print(tree_parse)
                 else:
                     print('NONE')
 
