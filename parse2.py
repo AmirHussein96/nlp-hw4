@@ -583,9 +583,9 @@ def main():
                 logging.debug(f"Parsing sentence: {sentence}")
                 chart = EarleyChart(sentence.split(), grammar, progress=args.progress)
                 # print the result
-                print(
-                    f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
-                )
+                # print(
+                #     f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
+                # )
                 logging.debug(f"Profile of work done: {chart.profile}")
                 if chart.accepted():
                     # chart.traverse_test(chart.accepted(), 2)
