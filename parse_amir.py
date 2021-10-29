@@ -191,8 +191,8 @@ class EarleyChart:
                 # print(self.best_attached)
                 # print('customer: ' ,customer)
                 # pdb.set_trace()
-                if position==2 and customer.start_position==0:
-                   pdb.set_trace()
+               # if position==3 and customer.start_position==0:
+               #    pdb.set_trace()
                 if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                     node_item = Node(item,item.rule.lhs, position)
                     node_customer = self.get_parent(new_item, position,node_item)
@@ -305,8 +305,7 @@ class EarleyChart:
                 if parent.weight < self.best_attached[(parent.name,parent.start_position,endpos)].weight: # check the minimum weight
                    # parent.total_weight+= parent.weight
                     self.best_attached[(parent.name,parent.start_position,endpos)] = parent
-                else:
-                    parent = self.best_attached[(parent.name,parent.start_position,endpos)]
+                
                     
             if (parent.name,parent.start_position,endpos) in self.tobe_attached:
                 del self.tobe_attached[(parent.start_position,str(parent.rule))] # remove from temporary dict
