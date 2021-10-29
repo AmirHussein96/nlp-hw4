@@ -19,6 +19,7 @@ from collections import Counter
 from typing import Counter as CounterType, Iterable, List, Optional, Dict, Tuple
 import math
 import pdb
+import os
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments"""
@@ -75,8 +76,10 @@ class EarleyChart:
         self.tobe_attached = {} # dictionary of possible parents for attachment
         self.root = None
         self.cols: List[Agenda]
-        self._run_earley()    # run Earley's algorithm to construct self.cols
+        self.check_duplicates = {}
         self.traverse_output = "" # Don string for printing
+        self._run_earley()    # run Earley's algorithm to construct self.cols
+        
         
 
     def accepted(self) -> bool:
@@ -110,6 +113,8 @@ class EarleyChart:
                                    disable=not self.progress):
             logging.debug("")
             logging.debug(f"Processing items in column {i}")
+            #pdb.set_trace()
+            self.check_duplicates = {}
             while column:    # while agenda isn't empty
                 item = column.pop()   # dequeue the next unprocessed item
                 next = item.next_symbol()
@@ -129,8 +134,12 @@ class EarleyChart:
     def _predict(self, nonterminal: str, position: int) -> None:
         """Start looking for this nonterminal at the given position."""
         for rule in self.grammar.expansions(nonterminal):   # this looks into all possibple rules for the nonterminal (need to check if this has been precessed for efficiency)
-            new_item = Item(rule, dot_position=0, start_position=position)     
-            self.cols[position].push(new_item)
+            new_item = Item(rule, dot_position=0, start_position=position)   
+            
+            if (position, new_item.rule.lhs, new_item.rule.rhs)  not in self.check_duplicates:
+                self.check_duplicates[(position, new_item.rule.lhs, new_item.rule.rhs)] = True
+                self.cols[position].push(new_item)
+            
             logging.debug(f"\tPredicted: {new_item} in column {position}")
             self.profile["PREDICT"] += 1
 
@@ -146,11 +155,13 @@ class EarleyChart:
             logging.debug(f"\tScanned to get: {new_item} in column {position+1}")
             self.profile["SCAN"] += 1
 
-            if  (new_item.start_position,str(new_item.rule)) in self.tobe_attached:
+            if  (new_item.start_position, str(new_item.rule)) in self.tobe_attached:
                 # pdb.set_trace()
-                self.tobe_attached[(new_item.start_position,str(new_item.rule))].dot_position = new_item.dot_position
+                self.tobe_attached[(new_item.start_position, str(new_item.rule))] = self.tobe_attached[(new_item.start_position, str(new_item.rule))]
+                #del self.tobe_attached[(new_item.start_position, position, str(new_item.rule))]
+                self.tobe_attached[(new_item.start_position, str(new_item.rule))].dot_position = new_item.dot_position
                 if new_item.dot_position == len(new_item.rule.rhs):
-                    node_item = self.tobe_attached[(new_item.start_position,str(new_item.rule))]
+                    node_item = self.tobe_attached[(new_item.start_position, str(new_item.rule))]
                     self.best_attached[(node_item.name,node_item.start_position,position+1)] = node_item 
             elif new_item.dot_position == len(new_item.rule.rhs) and len(new_item.rule.rhs) == 1: # add the unary rules to the graph
                     node_customer = Node(new_item,item.rule.lhs,position+1)
@@ -177,9 +188,11 @@ class EarleyChart:
                 self.profile["ATTACH"] += 1
                 # for rule in customer.rules:
                 # convert item to a node which we can update
-#Don                pdb.set_trace()
-              #  if customer.rule.lhs =='FACTOR' and customer.start_position==6:
-                    #pdb.set_trace()
+                # print(self.best_attached)
+                # print('customer: ' ,customer)
+                # pdb.set_trace()
+                if position==2 and customer.start_position==0:
+                   pdb.set_trace()
                 if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                     node_item = Node(item,item.rule.lhs, position)
                     node_customer = self.get_parent(new_item, position,node_item)
@@ -192,25 +205,56 @@ class EarleyChart:
                     else:
                         node_item = self.best_attached[(item.rule.lhs,item.start_position,position)] 
                         node_customer = self.get_parent(new_item, position,node_item)
-                self.add_to_graph(node_item, node_customer, mid, position)
+                
+                  
+                if node_item not in node_customer.children:
+                    self.add_to_graph(node_item, node_customer, mid, position)
                 #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
-    def get_parent(self, customer, end_position,child):
+    def get_parent(self, customer, end_position, child):
         if customer.dot_position < len(customer.rule.rhs) and (customer.start_position,str(customer.rule)) not in self.tobe_attached:
             node_customer = Node(customer,customer.rule.lhs, None)
-            self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
-        elif (customer.start_position,str(customer.rule)) not in self.tobe_attached:
+            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+        elif (customer.start_position, str(customer.rule)) not in self.tobe_attached:
             node_customer = Node(customer,customer.rule.lhs, None)
-            self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
+            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
             return node_customer
-        elif (customer.start_position,str(customer.rule)) in self.tobe_attached:
-            node_customer = self.tobe_attached[(customer.start_position,str(customer.rule))]
-            if child.start_position == node_customer.children[0].start_position and end_position > node_customer.children[0].end_position:  # this means overlap
-                node_customer.total_weight-= node_customer.children[0].total_weight
-                node_customer.children.pop()
-                self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
+        elif (customer.start_position, str(customer.rule)) in self.tobe_attached:
+            node_customer = self.tobe_attached[(customer.start_position, str(customer.rule))]
+            node_customer.dot_position = customer.dot_position
+            if node_customer.children[0].end_position is not None:
+                if node_customer.children[0].end_position > child.start_position and child.start_position != node_customer.children[0].start_position:
+                    new_ch_end = node_customer.children[0].end_position-(node_customer.children[0].end_position - child.start_position) -1
+                   # detach the child
+                   # print(self.best_attached)
+                   # print(node_customer.start_position, node_customer.children[0].end_position, node_customer.rule)
+                   # pdb.set_trace()
+                    if (node_customer.name,node_customer.start_position,new_ch_end) in self.best_attached:
+                        node_customer.total_weight = node_customer.total_weight - node_customer.children[0].total_weight
+                        node_customer.children.pop()
+    
+                        node_customer.children.append(self.best_attached[(node_customer.name,node_customer.start_position,new_ch_end)])
+                        node_customer.total_weight = node_customer.total_weight + node_customer.children[0].total_weight
+    
+                else:
+                    if child.end_position is not None:
+                        if child.start_position == node_customer.children[0].start_position and child.end_position > node_customer.children[0].end_position:  # this means overlap
+                            node_customer.total_weight-= node_customer.children[0].total_weight
+                            node_customer.children.pop()
+                            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                        else:
+                            node_customer.dot_position = customer.dot_position
+                            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                    else:
+                        node_customer.dot_position = customer.dot_position
+                        self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
             else:
-                node_customer.dot_position = customer.dot_position
-                self.tobe_attached[(customer.start_position,str(customer.rule))] = node_customer
+                if child.start_position == node_customer.children[0].start_position: # and child.end_position > node_customer.children[0].end_position:  # this means overlap
+                    node_customer.total_weight-= node_customer.children[0].total_weight
+                    node_customer.children.pop()
+                    self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                else:
+                    node_customer.dot_position = customer.dot_position
+                    self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
         return node_customer
     
 
@@ -250,12 +294,13 @@ class EarleyChart:
                 parent.add_children(child)  
                               
         if parent.dot_position == len(parent.rule.rhs): # if the dot reached the end 
+           
             if (parent.name,parent.start_position , endpos) not in self.best_attached:
                # parent.total_weight+= parent.weight  # we start the total weight with the node rule weight, so no need to add again
                 parent.end_position = endpos
               #  pdb.set_trace()
                 self.best_attached[(parent.name,parent.start_position,endpos)] = parent 
-                del self.tobe_attached[(parent.start_position,str(parent.rule))] # remove from temporary dict
+                del self.tobe_attached[(parent.start_position, str(parent.rule))] # remove from temporary dict
             elif (parent.name,parent.start_position , endpos) in self.best_attached:
                 if parent.weight < self.best_attached[(parent.name,parent.start_position,endpos)].weight: # check the minimum weight
                    # parent.total_weight+= parent.weight
@@ -270,7 +315,7 @@ class EarleyChart:
             if parent.total_weight < self.min_parse_weight:
                 self.min_parse_weight = parent.total_weight
                # pdb.set_trace()
-                self.root = parent
+                self.root = parent                  
                 
     
     def traverse(self, node, position):
@@ -454,7 +499,6 @@ class Node:
         self.name = name   # Amir: the head of the node
         self.total_weight = item.rule.weight
         self.children = []
-
         self.parents = {}
         self.weight = item.rule.weight
         if self.name == 'ROOT':
@@ -481,7 +525,6 @@ class Node:
     def print_children(self):
         for child in self.children:
             print('child: ', child.name, ' with rule: ', child.start_position, '-' , child.end_position , child.rule)
-
 # We particularly want items to be immutable, since they will be hashed and 
 # used as keys in a dictionary (for duplicate detection).  
 @dataclass(frozen=True)
@@ -534,15 +577,15 @@ def main():
                 logging.debug(f"Parsing sentence: {sentence}")
                 chart = EarleyChart(sentence.split(), grammar, progress=args.progress)
                 # print the result
-                print(
-                    f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
-                )
+                # print(
+                #     f"'{sentence}' is {'accepted' if chart.accepted() else 'rejected'} by {args.grammar}"
+                # )
                 logging.debug(f"Profile of work done: {chart.profile}")
                 if chart.accepted():
+                   # tree_parse = chart.traverse(chart.accepted(), 0)
+                   # t = os.system(f"echo '{tree_parse}' | ./prettyprint")
+                   # print(t)
                     print(chart.root.total_weight)
-                    # not printing right now: some bug to fix
-                    #tree_parse = chart.traverse(chart.accepted(), 0)
-                    #print(tree_parse)
                 else:
                     print('NONE')
 
