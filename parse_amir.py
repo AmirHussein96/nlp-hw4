@@ -287,8 +287,8 @@ class EarleyChart:
             elif (child.name, startpos, endpos) in self.best_attached:
                 if child.weight < self.best_attached[(child.name,startpos,endpos)].weight: # check the minimum weight
                     self.best_attached[(child.name,startpos,endpos)] = child
-                else:
-                    child = self.best_attached[(child.name,startpos,endpos)]
+             #   else:
+             #       child = self.best_attached[(child.name,startpos,endpos)]
                #child.parent = parent 
                 parent.total_weight+= child.total_weight
                 parent.add_children(child)  
