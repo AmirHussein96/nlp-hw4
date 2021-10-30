@@ -346,14 +346,14 @@ class EarleyChart:
         for child in node.children:
             node.child_dict[child.start_position] = (child, child.end_position)
 
-        node.print_loc
+        # node.print_loc
         for thing in node.rule.rhs:
             # pdb.set_trace()
             if not self.grammar.is_nonterminal(thing):
                 self.traverse_output += thing
                 node.print_loc += 1
             else:
-           #     pdb.set_trace()
+                pdb.set_trace()
                 self.traverse(node.child_dict[node.print_loc][0], node.print_loc)
                 node.print_loc = node.child_dict[node.print_loc][1]
         
