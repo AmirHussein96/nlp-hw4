@@ -1,0 +1,19 @@
+(ROOT (S (NP (NPR (NNP John))
+             (VBZ is))
+         (VP (JJ happy))
+         (PUNC. .)))
+0
+49.736699914321534
+Traceback (most recent call last):
+  File "/home/dhollo11/classes/NLP/HW4/nlp-hw4/parse_amir.py", line 625, in <module>
+    main()
+  File "/home/dhollo11/classes/NLP/HW4/nlp-hw4/parse_amir.py", line 614, in main
+    tree_parse = chart.traverse(chart.accepted(), 0)
+  File "/home/dhollo11/classes/NLP/HW4/nlp-hw4/parse_amir.py", line 366, in traverse
+    self.traverse(node.child_dict[node.print_loc][0], node.print_loc)
+  File "/home/dhollo11/classes/NLP/HW4/nlp-hw4/parse_amir.py", line 366, in traverse
+    self.traverse(node.child_dict[node.print_loc][0], node.print_loc)
+  File "/home/dhollo11/classes/NLP/HW4/nlp-hw4/parse_amir.py", line 366, in traverse
+    self.traverse(node.child_dict[node.print_loc][0], node.print_loc)
+  [Previous line repeated 9 more times]
+KeyError: 2
