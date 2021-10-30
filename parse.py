@@ -142,9 +142,9 @@ class EarleyChart:
         for rule in self.grammar.expansions(nonterminal):   # this looks into all possibple rules for the nonterminal (need to check if this has been precessed for efficiency)
             new_item = Item(rule, dot_position=0, start_position=position)   
             
-            if (position, new_item.rule.lhs, new_item.rule.rhs)  not in self.check_duplicates:
-                self.check_duplicates[(position, new_item.rule.lhs, new_item.rule.rhs)] = True
-                self.cols[position].push(new_item)
+            # if (position, new_item.rule.lhs, new_item.rule.rhs)  not in self.check_duplicates:
+                # self.check_duplicates[(position, new_item.rule.lhs, new_item.rule.rhs)] = True
+            self.cols[position].push(new_item)
             
             logging.debug(f"\tPredicted: {new_item} in column {position}")
             self.profile["PREDICT"] += 1
@@ -353,7 +353,7 @@ class EarleyChart:
                 self.traverse_output += thing
                 node.print_loc += 1
             else:
-                pdb.set_trace()
+                # pdb.set_trace()
                 self.traverse(node.child_dict[node.print_loc][0], node.print_loc)
                 node.print_loc = node.child_dict[node.print_loc][1]
         
