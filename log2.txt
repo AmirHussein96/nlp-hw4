@@ -1,0 +1,1284 @@
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: Papa ate the caviar
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (0, NP → Papa ·) in column 1
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 1
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 1
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (1, PP → · P NP) in column 1
+DEBUG:root:(1, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (1, V → · ate) in column 1
+DEBUG:root:(1, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(1, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (1, P → · with) in column 1
+DEBUG:root:(1, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (1, V → ate ·) in column 2
+DEBUG:root:(1, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V · NP) in column 2
+DEBUG:root:(1, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (2, Det → · the) in column 2
+DEBUG:root:	Predicted: (2, Det → · a) in column 2
+DEBUG:root:(2, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Papa) => SCAN
+DEBUG:root:(2, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (2, Det → the ·) in column 3
+DEBUG:root:(2, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → Det · N) in column 3
+DEBUG:root:(2, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (3, N → · caviar) in column 3
+DEBUG:root:	Predicted: (3, N → · spoon) in column 3
+DEBUG:root:(3, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (3, N → caviar ·) in column 4
+DEBUG:root:(3, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(3, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → Det N ·) in column 4
+DEBUG:root:(2, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 4
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 4
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 4
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 4
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 4
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(4, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (4, P → · with) in column 4
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:(4, P → · with) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 30, 'ATTACH': 10, 'SCAN': 4})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: Papa ate caviar
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (0, NP → Papa ·) in column 1
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 1
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 1
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (1, PP → · P NP) in column 1
+DEBUG:root:(1, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (1, V → · ate) in column 1
+DEBUG:root:(1, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(1, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (1, P → · with) in column 1
+DEBUG:root:(1, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (1, V → ate ·) in column 2
+DEBUG:root:(1, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V · NP) in column 2
+DEBUG:root:(1, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (2, Det → · the) in column 2
+DEBUG:root:	Predicted: (2, Det → · a) in column 2
+DEBUG:root:(2, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Papa) => SCAN
+DEBUG:root:(2, Det → · the) => SCAN
+DEBUG:root:(2, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:Profile of work done: Counter({'PREDICT': 25, 'ATTACH': 3, 'SCAN': 2})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: Papa ate the
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (0, NP → Papa ·) in column 1
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 1
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 1
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (1, PP → · P NP) in column 1
+DEBUG:root:(1, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (1, V → · ate) in column 1
+DEBUG:root:(1, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(1, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (1, P → · with) in column 1
+DEBUG:root:(1, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (1, V → ate ·) in column 2
+DEBUG:root:(1, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V · NP) in column 2
+DEBUG:root:(1, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (2, Det → · the) in column 2
+DEBUG:root:	Predicted: (2, Det → · a) in column 2
+DEBUG:root:(2, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Papa) => SCAN
+DEBUG:root:(2, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (2, Det → the ·) in column 3
+DEBUG:root:(2, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → Det · N) in column 3
+DEBUG:root:(2, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (3, N → · caviar) in column 3
+DEBUG:root:	Predicted: (3, N → · spoon) in column 3
+DEBUG:root:(3, N → · caviar) => SCAN
+DEBUG:root:(3, N → · spoon) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 27, 'ATTACH': 4, 'SCAN': 3})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: Papa ate the caviar with a spoon
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (0, NP → Papa ·) in column 1
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 1
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 1
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (1, PP → · P NP) in column 1
+DEBUG:root:(1, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (1, V → · ate) in column 1
+DEBUG:root:(1, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(1, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (1, P → · with) in column 1
+DEBUG:root:(1, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (1, V → ate ·) in column 2
+DEBUG:root:(1, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V · NP) in column 2
+DEBUG:root:(1, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (2, Det → · the) in column 2
+DEBUG:root:	Predicted: (2, Det → · a) in column 2
+DEBUG:root:(2, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Papa) => SCAN
+DEBUG:root:(2, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (2, Det → the ·) in column 3
+DEBUG:root:(2, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → Det · N) in column 3
+DEBUG:root:(2, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (3, N → · caviar) in column 3
+DEBUG:root:	Predicted: (3, N → · spoon) in column 3
+DEBUG:root:(3, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (3, N → caviar ·) in column 4
+DEBUG:root:(3, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(3, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → Det N ·) in column 4
+DEBUG:root:(2, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 4
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 4
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 4
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 4
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 4
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(4, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (4, P → · with) in column 4
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:(4, P → · with) => SCAN
+DEBUG:root:	Scanned to get: (4, P → with ·) in column 5
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, P → with ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P · NP) in column 5
+DEBUG:root:(4, PP → P · NP) => PREDICT
+DEBUG:root:	Predicted: (5, NP → · Det N) in column 5
+DEBUG:root:	Predicted: (5, NP → · NP PP) in column 5
+DEBUG:root:	Predicted: (5, NP → · Papa) in column 5
+DEBUG:root:(5, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (5, Det → · the) in column 5
+DEBUG:root:	Predicted: (5, Det → · a) in column 5
+DEBUG:root:(5, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (5, NP → · Det N) in column 5
+DEBUG:root:	Predicted: (5, NP → · NP PP) in column 5
+DEBUG:root:	Predicted: (5, NP → · Papa) in column 5
+DEBUG:root:(5, NP → · Papa) => SCAN
+DEBUG:root:(5, Det → · the) => SCAN
+DEBUG:root:(5, Det → · a) => SCAN
+DEBUG:root:	Scanned to get: (5, Det → a ·) in column 6
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:(5, Det → a ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → Det · N) in column 6
+DEBUG:root:(5, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (6, N → · caviar) in column 6
+DEBUG:root:	Predicted: (6, N → · spoon) in column 6
+DEBUG:root:(6, N → · caviar) => SCAN
+DEBUG:root:(6, N → · spoon) => SCAN
+DEBUG:root:	Scanned to get: (6, N → spoon ·) in column 7
+DEBUG:root:
+DEBUG:root:Processing items in column 7
+DEBUG:root:(6, N → spoon ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → Det N ·) in column 7
+DEBUG:root:(5, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P NP ·) in column 7
+DEBUG:root:	Attached to get: (5, NP → NP · PP) in column 7
+DEBUG:root:(4, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 7
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 7
+DEBUG:root:(5, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(2, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 7
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 7
+DEBUG:root:(1, VP → VP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 7
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 7
+DEBUG:root:(7, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (7, P → · with) in column 7
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 7
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 7
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 7
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(7, P → · with) => SCAN
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:Profile of work done: Counter({'PREDICT': 44, 'ATTACH': 24, 'SCAN': 7})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: Papa ate
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (0, NP → Papa ·) in column 1
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 1
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 1
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (1, PP → · P NP) in column 1
+DEBUG:root:(1, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (1, V → · ate) in column 1
+DEBUG:root:(1, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(1, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (1, P → · with) in column 1
+DEBUG:root:(1, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (1, V → ate ·) in column 2
+DEBUG:root:(1, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V · NP) in column 2
+DEBUG:root:(1, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (2, Det → · the) in column 2
+DEBUG:root:	Predicted: (2, Det → · a) in column 2
+DEBUG:root:(2, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Papa) => SCAN
+DEBUG:root:(2, Det → · the) => SCAN
+DEBUG:root:(2, Det → · a) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 25, 'ATTACH': 3, 'SCAN': 2})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: ate the caviar
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:Profile of work done: Counter({'PREDICT': 10})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: the caviar ate with a spoon
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (0, Det → the ·) in column 1
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det · N) in column 1
+DEBUG:root:(0, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (1, N → · caviar) in column 1
+DEBUG:root:	Predicted: (1, N → · spoon) in column 1
+DEBUG:root:(1, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (1, N → caviar ·) in column 2
+DEBUG:root:(1, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det N ·) in column 2
+DEBUG:root:(0, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 2
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 2
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (2, PP → · P NP) in column 2
+DEBUG:root:(2, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (2, V → · ate) in column 2
+DEBUG:root:(2, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(2, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (2, P → · with) in column 2
+DEBUG:root:(2, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (2, V → ate ·) in column 3
+DEBUG:root:(2, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (2, VP → V · NP) in column 3
+DEBUG:root:(2, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (3, NP → · Det N) in column 3
+DEBUG:root:	Predicted: (3, NP → · NP PP) in column 3
+DEBUG:root:	Predicted: (3, NP → · Papa) in column 3
+DEBUG:root:(3, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (3, Det → · the) in column 3
+DEBUG:root:	Predicted: (3, Det → · a) in column 3
+DEBUG:root:(3, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (3, NP → · Det N) in column 3
+DEBUG:root:	Predicted: (3, NP → · NP PP) in column 3
+DEBUG:root:	Predicted: (3, NP → · Papa) in column 3
+DEBUG:root:(3, NP → · Papa) => SCAN
+DEBUG:root:(3, Det → · the) => SCAN
+DEBUG:root:(3, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:Profile of work done: Counter({'PREDICT': 27, 'ATTACH': 5, 'SCAN': 3})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: the caviar ate a spoon
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (0, Det → the ·) in column 1
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det · N) in column 1
+DEBUG:root:(0, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (1, N → · caviar) in column 1
+DEBUG:root:	Predicted: (1, N → · spoon) in column 1
+DEBUG:root:(1, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (1, N → caviar ·) in column 2
+DEBUG:root:(1, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det N ·) in column 2
+DEBUG:root:(0, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 2
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 2
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (2, PP → · P NP) in column 2
+DEBUG:root:(2, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (2, V → · ate) in column 2
+DEBUG:root:(2, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(2, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (2, P → · with) in column 2
+DEBUG:root:(2, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (2, V → ate ·) in column 3
+DEBUG:root:(2, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (2, VP → V · NP) in column 3
+DEBUG:root:(2, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (3, NP → · Det N) in column 3
+DEBUG:root:	Predicted: (3, NP → · NP PP) in column 3
+DEBUG:root:	Predicted: (3, NP → · Papa) in column 3
+DEBUG:root:(3, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (3, Det → · the) in column 3
+DEBUG:root:	Predicted: (3, Det → · a) in column 3
+DEBUG:root:(3, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (3, NP → · Det N) in column 3
+DEBUG:root:	Predicted: (3, NP → · NP PP) in column 3
+DEBUG:root:	Predicted: (3, NP → · Papa) in column 3
+DEBUG:root:(3, NP → · Papa) => SCAN
+DEBUG:root:(3, Det → · the) => SCAN
+DEBUG:root:(3, Det → · a) => SCAN
+DEBUG:root:	Scanned to get: (3, Det → a ·) in column 4
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(3, Det → a ·) => ATTACH
+DEBUG:root:	Attached to get: (3, NP → Det · N) in column 4
+DEBUG:root:(3, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (4, N → · caviar) in column 4
+DEBUG:root:	Predicted: (4, N → · spoon) in column 4
+DEBUG:root:(4, N → · caviar) => SCAN
+DEBUG:root:(4, N → · spoon) => SCAN
+DEBUG:root:	Scanned to get: (4, N → spoon ·) in column 5
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, N → spoon ·) => ATTACH
+DEBUG:root:	Attached to get: (3, NP → Det N ·) in column 5
+DEBUG:root:(3, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (2, VP → V NP ·) in column 5
+DEBUG:root:	Attached to get: (3, NP → NP · PP) in column 5
+DEBUG:root:(2, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 5
+DEBUG:root:	Attached to get: (2, VP → VP · PP) in column 5
+DEBUG:root:(3, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (5, PP → · P NP) in column 5
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 5
+DEBUG:root:(2, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (5, PP → · P NP) in column 5
+DEBUG:root:(5, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (5, P → · with) in column 5
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:(5, P → · with) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 32, 'ATTACH': 12, 'SCAN': 5})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: the caviar is pink
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (0, Det → the ·) in column 1
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det · N) in column 1
+DEBUG:root:(0, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (1, N → · caviar) in column 1
+DEBUG:root:	Predicted: (1, N → · spoon) in column 1
+DEBUG:root:(1, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (1, N → caviar ·) in column 2
+DEBUG:root:(1, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det N ·) in column 2
+DEBUG:root:(0, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 2
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 2
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (2, PP → · P NP) in column 2
+DEBUG:root:(2, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (2, V → · ate) in column 2
+DEBUG:root:(2, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(2, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (2, P → · with) in column 2
+DEBUG:root:(2, V → · ate) => SCAN
+DEBUG:root:(2, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:Profile of work done: Counter({'PREDICT': 19, 'ATTACH': 4, 'SCAN': 2})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: the caviar ate Papa with a spoon
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (0, Det → the ·) in column 1
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det · N) in column 1
+DEBUG:root:(0, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (1, N → · caviar) in column 1
+DEBUG:root:	Predicted: (1, N → · spoon) in column 1
+DEBUG:root:(1, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (1, N → caviar ·) in column 2
+DEBUG:root:(1, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (0, NP → Det N ·) in column 2
+DEBUG:root:(0, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 2
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 2
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (2, PP → · P NP) in column 2
+DEBUG:root:(2, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (2, V → · ate) in column 2
+DEBUG:root:(2, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (2, VP → · V NP) in column 2
+DEBUG:root:	Predicted: (2, VP → · VP PP) in column 2
+DEBUG:root:(2, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (2, P → · with) in column 2
+DEBUG:root:(2, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (2, V → ate ·) in column 3
+DEBUG:root:(2, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (2, VP → V · NP) in column 3
+DEBUG:root:(2, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (3, NP → · Det N) in column 3
+DEBUG:root:	Predicted: (3, NP → · NP PP) in column 3
+DEBUG:root:	Predicted: (3, NP → · Papa) in column 3
+DEBUG:root:(3, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (3, Det → · the) in column 3
+DEBUG:root:	Predicted: (3, Det → · a) in column 3
+DEBUG:root:(3, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (3, NP → · Det N) in column 3
+DEBUG:root:	Predicted: (3, NP → · NP PP) in column 3
+DEBUG:root:	Predicted: (3, NP → · Papa) in column 3
+DEBUG:root:(3, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (3, NP → Papa ·) in column 4
+DEBUG:root:(3, Det → · the) => SCAN
+DEBUG:root:(3, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(3, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (2, VP → V NP ·) in column 4
+DEBUG:root:	Attached to get: (3, NP → NP · PP) in column 4
+DEBUG:root:(2, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 4
+DEBUG:root:	Attached to get: (2, VP → VP · PP) in column 4
+DEBUG:root:(3, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 4
+DEBUG:root:(2, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(4, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (4, P → · with) in column 4
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:(4, P → · with) => SCAN
+DEBUG:root:	Scanned to get: (4, P → with ·) in column 5
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, P → with ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P · NP) in column 5
+DEBUG:root:(4, PP → P · NP) => PREDICT
+DEBUG:root:	Predicted: (5, NP → · Det N) in column 5
+DEBUG:root:	Predicted: (5, NP → · NP PP) in column 5
+DEBUG:root:	Predicted: (5, NP → · Papa) in column 5
+DEBUG:root:(5, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (5, Det → · the) in column 5
+DEBUG:root:	Predicted: (5, Det → · a) in column 5
+DEBUG:root:(5, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (5, NP → · Det N) in column 5
+DEBUG:root:	Predicted: (5, NP → · NP PP) in column 5
+DEBUG:root:	Predicted: (5, NP → · Papa) in column 5
+DEBUG:root:(5, NP → · Papa) => SCAN
+DEBUG:root:(5, Det → · the) => SCAN
+DEBUG:root:(5, Det → · a) => SCAN
+DEBUG:root:	Scanned to get: (5, Det → a ·) in column 6
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:(5, Det → a ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → Det · N) in column 6
+DEBUG:root:(5, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (6, N → · caviar) in column 6
+DEBUG:root:	Predicted: (6, N → · spoon) in column 6
+DEBUG:root:(6, N → · caviar) => SCAN
+DEBUG:root:(6, N → · spoon) => SCAN
+DEBUG:root:	Scanned to get: (6, N → spoon ·) in column 7
+DEBUG:root:
+DEBUG:root:Processing items in column 7
+DEBUG:root:(6, N → spoon ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → Det N ·) in column 7
+DEBUG:root:(5, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P NP ·) in column 7
+DEBUG:root:	Attached to get: (5, NP → NP · PP) in column 7
+DEBUG:root:(4, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (3, NP → NP PP ·) in column 7
+DEBUG:root:	Attached to get: (2, VP → VP PP ·) in column 7
+DEBUG:root:(5, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(3, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (2, VP → V NP ·) in column 7
+DEBUG:root:	Attached to get: (3, NP → NP · PP) in column 7
+DEBUG:root:(2, VP → VP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 7
+DEBUG:root:	Attached to get: (2, VP → VP · PP) in column 7
+DEBUG:root:(7, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (7, P → · with) in column 7
+DEBUG:root:(2, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 7
+DEBUG:root:	Attached to get: (2, VP → VP · PP) in column 7
+DEBUG:root:(3, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 7
+DEBUG:root:(2, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(7, P → · with) => SCAN
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:Profile of work done: Counter({'PREDICT': 44, 'ATTACH': 24, 'SCAN': 7})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: Papa ate the caviar with the spoon with Papa with a spoon with the caviar
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (0, NP → Papa ·) in column 1
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 1
+DEBUG:root:	Attached to get: (0, NP → NP · PP) in column 1
+DEBUG:root:(0, S → NP · VP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(0, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (1, PP → · P NP) in column 1
+DEBUG:root:(1, VP → · V NP) => PREDICT
+DEBUG:root:	Predicted: (1, V → · ate) in column 1
+DEBUG:root:(1, VP → · VP PP) => PREDICT
+DEBUG:root:	Predicted: (1, VP → · V NP) in column 1
+DEBUG:root:	Predicted: (1, VP → · VP PP) in column 1
+DEBUG:root:(1, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (1, P → · with) in column 1
+DEBUG:root:(1, V → · ate) => SCAN
+DEBUG:root:	Scanned to get: (1, V → ate ·) in column 2
+DEBUG:root:(1, P → · with) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(1, V → ate ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V · NP) in column 2
+DEBUG:root:(1, VP → V · NP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (2, Det → · the) in column 2
+DEBUG:root:	Predicted: (2, Det → · a) in column 2
+DEBUG:root:(2, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (2, NP → · Det N) in column 2
+DEBUG:root:	Predicted: (2, NP → · NP PP) in column 2
+DEBUG:root:	Predicted: (2, NP → · Papa) in column 2
+DEBUG:root:(2, NP → · Papa) => SCAN
+DEBUG:root:(2, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (2, Det → the ·) in column 3
+DEBUG:root:(2, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → Det · N) in column 3
+DEBUG:root:(2, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (3, N → · caviar) in column 3
+DEBUG:root:	Predicted: (3, N → · spoon) in column 3
+DEBUG:root:(3, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (3, N → caviar ·) in column 4
+DEBUG:root:(3, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(3, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → Det N ·) in column 4
+DEBUG:root:(2, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 4
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 4
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 4
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 4
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 4
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (4, PP → · P NP) in column 4
+DEBUG:root:(4, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (4, P → · with) in column 4
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:(4, P → · with) => SCAN
+DEBUG:root:	Scanned to get: (4, P → with ·) in column 5
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, P → with ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P · NP) in column 5
+DEBUG:root:(4, PP → P · NP) => PREDICT
+DEBUG:root:	Predicted: (5, NP → · Det N) in column 5
+DEBUG:root:	Predicted: (5, NP → · NP PP) in column 5
+DEBUG:root:	Predicted: (5, NP → · Papa) in column 5
+DEBUG:root:(5, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (5, Det → · the) in column 5
+DEBUG:root:	Predicted: (5, Det → · a) in column 5
+DEBUG:root:(5, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (5, NP → · Det N) in column 5
+DEBUG:root:	Predicted: (5, NP → · NP PP) in column 5
+DEBUG:root:	Predicted: (5, NP → · Papa) in column 5
+DEBUG:root:(5, NP → · Papa) => SCAN
+DEBUG:root:(5, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (5, Det → the ·) in column 6
+DEBUG:root:(5, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:(5, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → Det · N) in column 6
+DEBUG:root:(5, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (6, N → · caviar) in column 6
+DEBUG:root:	Predicted: (6, N → · spoon) in column 6
+DEBUG:root:(6, N → · caviar) => SCAN
+DEBUG:root:(6, N → · spoon) => SCAN
+DEBUG:root:	Scanned to get: (6, N → spoon ·) in column 7
+DEBUG:root:
+DEBUG:root:Processing items in column 7
+DEBUG:root:(6, N → spoon ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → Det N ·) in column 7
+DEBUG:root:(5, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P NP ·) in column 7
+DEBUG:root:	Attached to get: (5, NP → NP · PP) in column 7
+DEBUG:root:(4, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 7
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 7
+DEBUG:root:(5, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(2, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 7
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 7
+DEBUG:root:(1, VP → VP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 7
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 7
+DEBUG:root:(7, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (7, P → · with) in column 7
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 7
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 7
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 7
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (7, PP → · P NP) in column 7
+DEBUG:root:(7, P → · with) => SCAN
+DEBUG:root:	Scanned to get: (7, P → with ·) in column 8
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:
+DEBUG:root:Processing items in column 8
+DEBUG:root:(7, P → with ·) => ATTACH
+DEBUG:root:	Attached to get: (7, PP → P · NP) in column 8
+DEBUG:root:(7, PP → P · NP) => PREDICT
+DEBUG:root:	Predicted: (8, NP → · Det N) in column 8
+DEBUG:root:	Predicted: (8, NP → · NP PP) in column 8
+DEBUG:root:	Predicted: (8, NP → · Papa) in column 8
+DEBUG:root:(8, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (8, Det → · the) in column 8
+DEBUG:root:	Predicted: (8, Det → · a) in column 8
+DEBUG:root:(8, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (8, NP → · Det N) in column 8
+DEBUG:root:	Predicted: (8, NP → · NP PP) in column 8
+DEBUG:root:	Predicted: (8, NP → · Papa) in column 8
+DEBUG:root:(8, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (8, NP → Papa ·) in column 9
+DEBUG:root:(8, Det → · the) => SCAN
+DEBUG:root:(8, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 9
+DEBUG:root:(8, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (7, PP → P NP ·) in column 9
+DEBUG:root:	Attached to get: (8, NP → NP · PP) in column 9
+DEBUG:root:(7, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → NP PP ·) in column 9
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 9
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 9
+DEBUG:root:(8, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (9, PP → · P NP) in column 9
+DEBUG:root:(5, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P NP ·) in column 9
+DEBUG:root:	Attached to get: (5, NP → NP · PP) in column 9
+DEBUG:root:(2, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 9
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 9
+DEBUG:root:(1, VP → VP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 9
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 9
+DEBUG:root:(9, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (9, P → · with) in column 9
+DEBUG:root:(4, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 9
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 9
+DEBUG:root:(5, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (9, PP → · P NP) in column 9
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 9
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 9
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (9, PP → · P NP) in column 9
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 9
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (9, PP → · P NP) in column 9
+DEBUG:root:(9, P → · with) => SCAN
+DEBUG:root:	Scanned to get: (9, P → with ·) in column 10
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:
+DEBUG:root:Processing items in column 10
+DEBUG:root:(9, P → with ·) => ATTACH
+DEBUG:root:	Attached to get: (9, PP → P · NP) in column 10
+DEBUG:root:(9, PP → P · NP) => PREDICT
+DEBUG:root:	Predicted: (10, NP → · Det N) in column 10
+DEBUG:root:	Predicted: (10, NP → · NP PP) in column 10
+DEBUG:root:	Predicted: (10, NP → · Papa) in column 10
+DEBUG:root:(10, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (10, Det → · the) in column 10
+DEBUG:root:	Predicted: (10, Det → · a) in column 10
+DEBUG:root:(10, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (10, NP → · Det N) in column 10
+DEBUG:root:	Predicted: (10, NP → · NP PP) in column 10
+DEBUG:root:	Predicted: (10, NP → · Papa) in column 10
+DEBUG:root:(10, NP → · Papa) => SCAN
+DEBUG:root:(10, Det → · the) => SCAN
+DEBUG:root:(10, Det → · a) => SCAN
+DEBUG:root:	Scanned to get: (10, Det → a ·) in column 11
+DEBUG:root:
+DEBUG:root:Processing items in column 11
+DEBUG:root:(10, Det → a ·) => ATTACH
+DEBUG:root:	Attached to get: (10, NP → Det · N) in column 11
+DEBUG:root:(10, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (11, N → · caviar) in column 11
+DEBUG:root:	Predicted: (11, N → · spoon) in column 11
+DEBUG:root:(11, N → · caviar) => SCAN
+DEBUG:root:(11, N → · spoon) => SCAN
+DEBUG:root:	Scanned to get: (11, N → spoon ·) in column 12
+DEBUG:root:
+DEBUG:root:Processing items in column 12
+DEBUG:root:(11, N → spoon ·) => ATTACH
+DEBUG:root:	Attached to get: (10, NP → Det N ·) in column 12
+DEBUG:root:(10, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (9, PP → P NP ·) in column 12
+DEBUG:root:	Attached to get: (10, NP → NP · PP) in column 12
+DEBUG:root:(9, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (8, NP → NP PP ·) in column 12
+DEBUG:root:	Attached to get: (5, NP → NP PP ·) in column 12
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 12
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 12
+DEBUG:root:(10, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (12, PP → · P NP) in column 12
+DEBUG:root:(8, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (7, PP → P NP ·) in column 12
+DEBUG:root:	Attached to get: (8, NP → NP · PP) in column 12
+DEBUG:root:(5, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P NP ·) in column 12
+DEBUG:root:	Attached to get: (5, NP → NP · PP) in column 12
+DEBUG:root:(2, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 12
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 12
+DEBUG:root:(1, VP → VP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 12
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 12
+DEBUG:root:(12, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (12, P → · with) in column 12
+DEBUG:root:(7, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → NP PP ·) in column 12
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 12
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 12
+DEBUG:root:(8, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (12, PP → · P NP) in column 12
+DEBUG:root:(4, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 12
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 12
+DEBUG:root:(5, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (12, PP → · P NP) in column 12
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 12
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 12
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (12, PP → · P NP) in column 12
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 12
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (12, PP → · P NP) in column 12
+DEBUG:root:(12, P → · with) => SCAN
+DEBUG:root:	Scanned to get: (12, P → with ·) in column 13
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:
+DEBUG:root:Processing items in column 13
+DEBUG:root:(12, P → with ·) => ATTACH
+DEBUG:root:	Attached to get: (12, PP → P · NP) in column 13
+DEBUG:root:(12, PP → P · NP) => PREDICT
+DEBUG:root:	Predicted: (13, NP → · Det N) in column 13
+DEBUG:root:	Predicted: (13, NP → · NP PP) in column 13
+DEBUG:root:	Predicted: (13, NP → · Papa) in column 13
+DEBUG:root:(13, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (13, Det → · the) in column 13
+DEBUG:root:	Predicted: (13, Det → · a) in column 13
+DEBUG:root:(13, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (13, NP → · Det N) in column 13
+DEBUG:root:	Predicted: (13, NP → · NP PP) in column 13
+DEBUG:root:	Predicted: (13, NP → · Papa) in column 13
+DEBUG:root:(13, NP → · Papa) => SCAN
+DEBUG:root:(13, Det → · the) => SCAN
+DEBUG:root:	Scanned to get: (13, Det → the ·) in column 14
+DEBUG:root:(13, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 14
+DEBUG:root:(13, Det → the ·) => ATTACH
+DEBUG:root:	Attached to get: (13, NP → Det · N) in column 14
+DEBUG:root:(13, NP → Det · N) => PREDICT
+DEBUG:root:	Predicted: (14, N → · caviar) in column 14
+DEBUG:root:	Predicted: (14, N → · spoon) in column 14
+DEBUG:root:(14, N → · caviar) => SCAN
+DEBUG:root:	Scanned to get: (14, N → caviar ·) in column 15
+DEBUG:root:(14, N → · spoon) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 15
+DEBUG:root:(14, N → caviar ·) => ATTACH
+DEBUG:root:	Attached to get: (13, NP → Det N ·) in column 15
+DEBUG:root:(13, NP → Det N ·) => ATTACH
+DEBUG:root:	Attached to get: (12, PP → P NP ·) in column 15
+DEBUG:root:	Attached to get: (13, NP → NP · PP) in column 15
+DEBUG:root:(12, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (10, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (8, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (5, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 15
+DEBUG:root:(13, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (15, PP → · P NP) in column 15
+DEBUG:root:(10, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (9, PP → P NP ·) in column 15
+DEBUG:root:	Attached to get: (10, NP → NP · PP) in column 15
+DEBUG:root:(8, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (7, PP → P NP ·) in column 15
+DEBUG:root:	Attached to get: (8, NP → NP · PP) in column 15
+DEBUG:root:(5, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (4, PP → P NP ·) in column 15
+DEBUG:root:	Attached to get: (5, NP → NP · PP) in column 15
+DEBUG:root:(2, NP → NP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (1, VP → V NP ·) in column 15
+DEBUG:root:	Attached to get: (2, NP → NP · PP) in column 15
+DEBUG:root:(1, VP → VP PP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 15
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 15
+DEBUG:root:(15, PP → · P NP) => PREDICT
+DEBUG:root:	Predicted: (15, P → · with) in column 15
+DEBUG:root:(9, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (8, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (5, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 15
+DEBUG:root:(10, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (15, PP → · P NP) in column 15
+DEBUG:root:(7, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (5, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 15
+DEBUG:root:(8, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (15, PP → · P NP) in column 15
+DEBUG:root:(4, PP → P NP ·) => ATTACH
+DEBUG:root:	Attached to get: (2, NP → NP PP ·) in column 15
+DEBUG:root:	Attached to get: (1, VP → VP PP ·) in column 15
+DEBUG:root:(5, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (15, PP → · P NP) in column 15
+DEBUG:root:(1, VP → V NP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP VP ·) in column 15
+DEBUG:root:	Attached to get: (1, VP → VP · PP) in column 15
+DEBUG:root:(2, NP → NP · PP) => PREDICT
+DEBUG:root:	Predicted: (15, PP → · P NP) in column 15
+DEBUG:root:(0, S → NP VP ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → S ·) in column 15
+DEBUG:root:(1, VP → VP · PP) => PREDICT
+DEBUG:root:	Predicted: (15, PP → · P NP) in column 15
+DEBUG:root:(15, P → · with) => SCAN
+DEBUG:root:(0, ROOT → S ·) => ATTACH
+DEBUG:root:Profile of work done: Counter({'ATTACH': 98, 'PREDICT': 90, 'SCAN': 15})
+6.158429362604483
+NONE
+NONE
+8.480357457491845
+NONE
+NONE
+NONE
+5.158429362604483
+NONE
+9.480357457491845
+6.158429362604482
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: Papa ate the caviar
+DEBUG:root:	Predicted: (0, ROOT → · S) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · S) => PREDICT
+DEBUG:root:	Predicted: (0, S → · NP VP) in column 0
+DEBUG:root:(0, S → · NP VP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Det N) => PREDICT
+DEBUG:root:	Predicted: (0, Det → · the) in column 0
+DEBUG:root:	Predicted: (0, Det → · a) in column 0
+DEBUG:root:(0, NP → · NP PP) => PREDICT
+DEBUG:root:	Predicted: (0, NP → · Det N) in column 0
+DEBUG:root:	Predicted: (0, NP → · NP PP) in column 0
+DEBUG:root:	Predicted: (0, NP → · Papa) in column 0
+DEBUG:root:(0, NP → · Papa) => SCAN
+DEBUG:root:	Scanned to get: (0, NP → Papa ·) in column 1
+DEBUG:root:(0, Det → · the) => SCAN
+DEBUG:root:(0, Det → · a) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, NP → Papa ·) => ATTACH
+DEBUG:root:	Attached to get: (0, S → NP · VP) in column 1
+> /home/local/QCRI/ahussein/nlp_hw/new_nlp4/nlp-hw4/parse_amir.py(199)_attach()
+-> if (item.rule.lhs, item.start_position, position) not in self.best_attached:
+(Pdb) 

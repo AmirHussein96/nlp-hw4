@@ -1,0 +1,4158 @@
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 * 5 + 6 * { 5 - 3 - 2 }
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (2, Num → 5 ·) in column 3
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (2, FACTOR → Num ·) in column 3
+DEBUG:root:(2, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → TERM * FACTOR ·) in column 3
+DEBUG:root:(0, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 3
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 3
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:	Scanned to get: (0, EXPR → EXPR + · TERM) in column 4
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(0, EXPR → EXPR + · TERM) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, FACTOR → · Num) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · { EXPR }) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · sqrt { EXPR }) in column 4
+DEBUG:root:(4, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (4, Num → · 0) in column 4
+DEBUG:root:	Predicted: (4, Num → · 1) in column 4
+DEBUG:root:	Predicted: (4, Num → · 2) in column 4
+DEBUG:root:	Predicted: (4, Num → · 3) in column 4
+DEBUG:root:	Predicted: (4, Num → · 4) in column 4
+DEBUG:root:	Predicted: (4, Num → · 5) in column 4
+DEBUG:root:	Predicted: (4, Num → · 6) in column 4
+DEBUG:root:	Predicted: (4, Num → · 7) in column 4
+DEBUG:root:	Predicted: (4, Num → · 8) in column 4
+DEBUG:root:	Predicted: (4, Num → · 9) in column 4
+DEBUG:root:	Predicted: (4, Num → · pi) in column 4
+DEBUG:root:	Predicted: (4, Num → · e) in column 4
+DEBUG:root:	Predicted: (4, Num → · 0.5) in column 4
+DEBUG:root:(4, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(4, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(4, Num → · 0) => SCAN
+DEBUG:root:(4, Num → · 1) => SCAN
+DEBUG:root:(4, Num → · 2) => SCAN
+DEBUG:root:(4, Num → · 3) => SCAN
+DEBUG:root:(4, Num → · 4) => SCAN
+DEBUG:root:(4, Num → · 5) => SCAN
+DEBUG:root:(4, Num → · 6) => SCAN
+DEBUG:root:	Scanned to get: (4, Num → 6 ·) in column 5
+DEBUG:root:(4, Num → · 7) => SCAN
+DEBUG:root:(4, Num → · 8) => SCAN
+DEBUG:root:(4, Num → · 9) => SCAN
+DEBUG:root:(4, Num → · pi) => SCAN
+DEBUG:root:(4, Num → · e) => SCAN
+DEBUG:root:(4, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, Num → 6 ·) => ATTACH
+DEBUG:root:	Attached to get: (4, FACTOR → Num ·) in column 5
+DEBUG:root:(4, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → FACTOR ·) in column 5
+DEBUG:root:(4, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 5
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 5
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (4, TERM → TERM * · FACTOR) in column 6
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:(4, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (6, FACTOR → · Num) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · { EXPR }) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · sqrt { EXPR }) in column 6
+DEBUG:root:(6, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (6, Num → · 0) in column 6
+DEBUG:root:	Predicted: (6, Num → · 1) in column 6
+DEBUG:root:	Predicted: (6, Num → · 2) in column 6
+DEBUG:root:	Predicted: (6, Num → · 3) in column 6
+DEBUG:root:	Predicted: (6, Num → · 4) in column 6
+DEBUG:root:	Predicted: (6, Num → · 5) in column 6
+DEBUG:root:	Predicted: (6, Num → · 6) in column 6
+DEBUG:root:	Predicted: (6, Num → · 7) in column 6
+DEBUG:root:	Predicted: (6, Num → · 8) in column 6
+DEBUG:root:	Predicted: (6, Num → · 9) in column 6
+DEBUG:root:	Predicted: (6, Num → · pi) in column 6
+DEBUG:root:	Predicted: (6, Num → · e) in column 6
+DEBUG:root:	Predicted: (6, Num → · 0.5) in column 6
+DEBUG:root:(6, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { · EXPR }) in column 7
+DEBUG:root:(6, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(6, Num → · 0) => SCAN
+DEBUG:root:(6, Num → · 1) => SCAN
+DEBUG:root:(6, Num → · 2) => SCAN
+DEBUG:root:(6, Num → · 3) => SCAN
+DEBUG:root:(6, Num → · 4) => SCAN
+DEBUG:root:(6, Num → · 5) => SCAN
+DEBUG:root:(6, Num → · 6) => SCAN
+DEBUG:root:(6, Num → · 7) => SCAN
+DEBUG:root:(6, Num → · 8) => SCAN
+DEBUG:root:(6, Num → · 9) => SCAN
+DEBUG:root:(6, Num → · pi) => SCAN
+DEBUG:root:(6, Num → · e) => SCAN
+DEBUG:root:(6, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 7
+DEBUG:root:(6, FACTOR → { · EXPR }) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, FACTOR → · Num) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · { EXPR }) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · sqrt { EXPR }) in column 7
+DEBUG:root:(7, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (7, Num → · 0) in column 7
+DEBUG:root:	Predicted: (7, Num → · 1) in column 7
+DEBUG:root:	Predicted: (7, Num → · 2) in column 7
+DEBUG:root:	Predicted: (7, Num → · 3) in column 7
+DEBUG:root:	Predicted: (7, Num → · 4) in column 7
+DEBUG:root:	Predicted: (7, Num → · 5) in column 7
+DEBUG:root:	Predicted: (7, Num → · 6) in column 7
+DEBUG:root:	Predicted: (7, Num → · 7) in column 7
+DEBUG:root:	Predicted: (7, Num → · 8) in column 7
+DEBUG:root:	Predicted: (7, Num → · 9) in column 7
+DEBUG:root:	Predicted: (7, Num → · pi) in column 7
+DEBUG:root:	Predicted: (7, Num → · e) in column 7
+DEBUG:root:	Predicted: (7, Num → · 0.5) in column 7
+DEBUG:root:(7, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(7, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(7, Num → · 0) => SCAN
+DEBUG:root:(7, Num → · 1) => SCAN
+DEBUG:root:(7, Num → · 2) => SCAN
+DEBUG:root:(7, Num → · 3) => SCAN
+DEBUG:root:(7, Num → · 4) => SCAN
+DEBUG:root:(7, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (7, Num → 5 ·) in column 8
+DEBUG:root:(7, Num → · 6) => SCAN
+DEBUG:root:(7, Num → · 7) => SCAN
+DEBUG:root:(7, Num → · 8) => SCAN
+DEBUG:root:(7, Num → · 9) => SCAN
+DEBUG:root:(7, Num → · pi) => SCAN
+DEBUG:root:(7, Num → · e) => SCAN
+DEBUG:root:(7, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 8
+DEBUG:root:(7, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (7, FACTOR → Num ·) in column 8
+DEBUG:root:(7, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (7, TERM → FACTOR ·) in column 8
+DEBUG:root:(7, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → TERM ·) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · * FACTOR) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · / FACTOR) in column 8
+DEBUG:root:(7, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 8
+DEBUG:root:(7, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(7, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 9
+DEBUG:root:
+DEBUG:root:Processing items in column 9
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, FACTOR → · Num) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · { EXPR }) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · sqrt { EXPR }) in column 9
+DEBUG:root:(9, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (9, Num → · 0) in column 9
+DEBUG:root:	Predicted: (9, Num → · 1) in column 9
+DEBUG:root:	Predicted: (9, Num → · 2) in column 9
+DEBUG:root:	Predicted: (9, Num → · 3) in column 9
+DEBUG:root:	Predicted: (9, Num → · 4) in column 9
+DEBUG:root:	Predicted: (9, Num → · 5) in column 9
+DEBUG:root:	Predicted: (9, Num → · 6) in column 9
+DEBUG:root:	Predicted: (9, Num → · 7) in column 9
+DEBUG:root:	Predicted: (9, Num → · 8) in column 9
+DEBUG:root:	Predicted: (9, Num → · 9) in column 9
+DEBUG:root:	Predicted: (9, Num → · pi) in column 9
+DEBUG:root:	Predicted: (9, Num → · e) in column 9
+DEBUG:root:	Predicted: (9, Num → · 0.5) in column 9
+DEBUG:root:(9, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(9, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(9, Num → · 0) => SCAN
+DEBUG:root:(9, Num → · 1) => SCAN
+DEBUG:root:(9, Num → · 2) => SCAN
+DEBUG:root:(9, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (9, Num → 3 ·) in column 10
+DEBUG:root:(9, Num → · 4) => SCAN
+DEBUG:root:(9, Num → · 5) => SCAN
+DEBUG:root:(9, Num → · 6) => SCAN
+DEBUG:root:(9, Num → · 7) => SCAN
+DEBUG:root:(9, Num → · 8) => SCAN
+DEBUG:root:(9, Num → · 9) => SCAN
+DEBUG:root:(9, Num → · pi) => SCAN
+DEBUG:root:(9, Num → · e) => SCAN
+DEBUG:root:(9, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 10
+DEBUG:root:(9, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (9, FACTOR → Num ·) in column 10
+DEBUG:root:(9, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (9, TERM → FACTOR ·) in column 10
+DEBUG:root:(9, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · * FACTOR) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · / FACTOR) in column 10
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 10
+DEBUG:root:(9, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(9, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 11
+DEBUG:root:
+DEBUG:root:Processing items in column 11
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, FACTOR → · Num) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · { EXPR }) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · sqrt { EXPR }) in column 11
+DEBUG:root:(11, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (11, Num → · 0) in column 11
+DEBUG:root:	Predicted: (11, Num → · 1) in column 11
+DEBUG:root:	Predicted: (11, Num → · 2) in column 11
+DEBUG:root:	Predicted: (11, Num → · 3) in column 11
+DEBUG:root:	Predicted: (11, Num → · 4) in column 11
+DEBUG:root:	Predicted: (11, Num → · 5) in column 11
+DEBUG:root:	Predicted: (11, Num → · 6) in column 11
+DEBUG:root:	Predicted: (11, Num → · 7) in column 11
+DEBUG:root:	Predicted: (11, Num → · 8) in column 11
+DEBUG:root:	Predicted: (11, Num → · 9) in column 11
+DEBUG:root:	Predicted: (11, Num → · pi) in column 11
+DEBUG:root:	Predicted: (11, Num → · e) in column 11
+DEBUG:root:	Predicted: (11, Num → · 0.5) in column 11
+DEBUG:root:(11, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(11, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(11, Num → · 0) => SCAN
+DEBUG:root:(11, Num → · 1) => SCAN
+DEBUG:root:(11, Num → · 2) => SCAN
+DEBUG:root:	Scanned to get: (11, Num → 2 ·) in column 12
+DEBUG:root:(11, Num → · 3) => SCAN
+DEBUG:root:(11, Num → · 4) => SCAN
+DEBUG:root:(11, Num → · 5) => SCAN
+DEBUG:root:(11, Num → · 6) => SCAN
+DEBUG:root:(11, Num → · 7) => SCAN
+DEBUG:root:(11, Num → · 8) => SCAN
+DEBUG:root:(11, Num → · 9) => SCAN
+DEBUG:root:(11, Num → · pi) => SCAN
+DEBUG:root:(11, Num → · e) => SCAN
+DEBUG:root:(11, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 12
+DEBUG:root:(11, Num → 2 ·) => ATTACH
+DEBUG:root:	Attached to get: (11, FACTOR → Num ·) in column 12
+DEBUG:root:(11, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (11, TERM → FACTOR ·) in column 12
+DEBUG:root:(11, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · * FACTOR) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · / FACTOR) in column 12
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 12
+DEBUG:root:(11, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(11, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { EXPR } ·) in column 13
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 13
+DEBUG:root:(6, FACTOR → { EXPR } ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → TERM * FACTOR ·) in column 13
+DEBUG:root:(4, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 13
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 13
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 176, 'ATTACH': 55, 'SCAN': 13})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 35, 'ATTACH': 8, 'SCAN': 1})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 *
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 51, 'ATTACH': 8, 'SCAN': 2})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 * 5
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (2, Num → 5 ·) in column 3
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (2, FACTOR → Num ·) in column 3
+DEBUG:root:(2, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → TERM * FACTOR ·) in column 3
+DEBUG:root:(0, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 3
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 3
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 51, 'ATTACH': 16, 'SCAN': 3})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 * 5 + 6 * { 5 - 3 - 2 } + sqrt { 7 }
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (2, Num → 5 ·) in column 3
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (2, FACTOR → Num ·) in column 3
+DEBUG:root:(2, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → TERM * FACTOR ·) in column 3
+DEBUG:root:(0, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 3
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 3
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:	Scanned to get: (0, EXPR → EXPR + · TERM) in column 4
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(0, EXPR → EXPR + · TERM) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, FACTOR → · Num) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · { EXPR }) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · sqrt { EXPR }) in column 4
+DEBUG:root:(4, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (4, Num → · 0) in column 4
+DEBUG:root:	Predicted: (4, Num → · 1) in column 4
+DEBUG:root:	Predicted: (4, Num → · 2) in column 4
+DEBUG:root:	Predicted: (4, Num → · 3) in column 4
+DEBUG:root:	Predicted: (4, Num → · 4) in column 4
+DEBUG:root:	Predicted: (4, Num → · 5) in column 4
+DEBUG:root:	Predicted: (4, Num → · 6) in column 4
+DEBUG:root:	Predicted: (4, Num → · 7) in column 4
+DEBUG:root:	Predicted: (4, Num → · 8) in column 4
+DEBUG:root:	Predicted: (4, Num → · 9) in column 4
+DEBUG:root:	Predicted: (4, Num → · pi) in column 4
+DEBUG:root:	Predicted: (4, Num → · e) in column 4
+DEBUG:root:	Predicted: (4, Num → · 0.5) in column 4
+DEBUG:root:(4, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(4, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(4, Num → · 0) => SCAN
+DEBUG:root:(4, Num → · 1) => SCAN
+DEBUG:root:(4, Num → · 2) => SCAN
+DEBUG:root:(4, Num → · 3) => SCAN
+DEBUG:root:(4, Num → · 4) => SCAN
+DEBUG:root:(4, Num → · 5) => SCAN
+DEBUG:root:(4, Num → · 6) => SCAN
+DEBUG:root:	Scanned to get: (4, Num → 6 ·) in column 5
+DEBUG:root:(4, Num → · 7) => SCAN
+DEBUG:root:(4, Num → · 8) => SCAN
+DEBUG:root:(4, Num → · 9) => SCAN
+DEBUG:root:(4, Num → · pi) => SCAN
+DEBUG:root:(4, Num → · e) => SCAN
+DEBUG:root:(4, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, Num → 6 ·) => ATTACH
+DEBUG:root:	Attached to get: (4, FACTOR → Num ·) in column 5
+DEBUG:root:(4, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → FACTOR ·) in column 5
+DEBUG:root:(4, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 5
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 5
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (4, TERM → TERM * · FACTOR) in column 6
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:(4, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (6, FACTOR → · Num) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · { EXPR }) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · sqrt { EXPR }) in column 6
+DEBUG:root:(6, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (6, Num → · 0) in column 6
+DEBUG:root:	Predicted: (6, Num → · 1) in column 6
+DEBUG:root:	Predicted: (6, Num → · 2) in column 6
+DEBUG:root:	Predicted: (6, Num → · 3) in column 6
+DEBUG:root:	Predicted: (6, Num → · 4) in column 6
+DEBUG:root:	Predicted: (6, Num → · 5) in column 6
+DEBUG:root:	Predicted: (6, Num → · 6) in column 6
+DEBUG:root:	Predicted: (6, Num → · 7) in column 6
+DEBUG:root:	Predicted: (6, Num → · 8) in column 6
+DEBUG:root:	Predicted: (6, Num → · 9) in column 6
+DEBUG:root:	Predicted: (6, Num → · pi) in column 6
+DEBUG:root:	Predicted: (6, Num → · e) in column 6
+DEBUG:root:	Predicted: (6, Num → · 0.5) in column 6
+DEBUG:root:(6, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { · EXPR }) in column 7
+DEBUG:root:(6, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(6, Num → · 0) => SCAN
+DEBUG:root:(6, Num → · 1) => SCAN
+DEBUG:root:(6, Num → · 2) => SCAN
+DEBUG:root:(6, Num → · 3) => SCAN
+DEBUG:root:(6, Num → · 4) => SCAN
+DEBUG:root:(6, Num → · 5) => SCAN
+DEBUG:root:(6, Num → · 6) => SCAN
+DEBUG:root:(6, Num → · 7) => SCAN
+DEBUG:root:(6, Num → · 8) => SCAN
+DEBUG:root:(6, Num → · 9) => SCAN
+DEBUG:root:(6, Num → · pi) => SCAN
+DEBUG:root:(6, Num → · e) => SCAN
+DEBUG:root:(6, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 7
+DEBUG:root:(6, FACTOR → { · EXPR }) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, FACTOR → · Num) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · { EXPR }) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · sqrt { EXPR }) in column 7
+DEBUG:root:(7, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (7, Num → · 0) in column 7
+DEBUG:root:	Predicted: (7, Num → · 1) in column 7
+DEBUG:root:	Predicted: (7, Num → · 2) in column 7
+DEBUG:root:	Predicted: (7, Num → · 3) in column 7
+DEBUG:root:	Predicted: (7, Num → · 4) in column 7
+DEBUG:root:	Predicted: (7, Num → · 5) in column 7
+DEBUG:root:	Predicted: (7, Num → · 6) in column 7
+DEBUG:root:	Predicted: (7, Num → · 7) in column 7
+DEBUG:root:	Predicted: (7, Num → · 8) in column 7
+DEBUG:root:	Predicted: (7, Num → · 9) in column 7
+DEBUG:root:	Predicted: (7, Num → · pi) in column 7
+DEBUG:root:	Predicted: (7, Num → · e) in column 7
+DEBUG:root:	Predicted: (7, Num → · 0.5) in column 7
+DEBUG:root:(7, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(7, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(7, Num → · 0) => SCAN
+DEBUG:root:(7, Num → · 1) => SCAN
+DEBUG:root:(7, Num → · 2) => SCAN
+DEBUG:root:(7, Num → · 3) => SCAN
+DEBUG:root:(7, Num → · 4) => SCAN
+DEBUG:root:(7, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (7, Num → 5 ·) in column 8
+DEBUG:root:(7, Num → · 6) => SCAN
+DEBUG:root:(7, Num → · 7) => SCAN
+DEBUG:root:(7, Num → · 8) => SCAN
+DEBUG:root:(7, Num → · 9) => SCAN
+DEBUG:root:(7, Num → · pi) => SCAN
+DEBUG:root:(7, Num → · e) => SCAN
+DEBUG:root:(7, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 8
+DEBUG:root:(7, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (7, FACTOR → Num ·) in column 8
+DEBUG:root:(7, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (7, TERM → FACTOR ·) in column 8
+DEBUG:root:(7, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → TERM ·) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · * FACTOR) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · / FACTOR) in column 8
+DEBUG:root:(7, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 8
+DEBUG:root:(7, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(7, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 9
+DEBUG:root:
+DEBUG:root:Processing items in column 9
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, FACTOR → · Num) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · { EXPR }) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · sqrt { EXPR }) in column 9
+DEBUG:root:(9, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (9, Num → · 0) in column 9
+DEBUG:root:	Predicted: (9, Num → · 1) in column 9
+DEBUG:root:	Predicted: (9, Num → · 2) in column 9
+DEBUG:root:	Predicted: (9, Num → · 3) in column 9
+DEBUG:root:	Predicted: (9, Num → · 4) in column 9
+DEBUG:root:	Predicted: (9, Num → · 5) in column 9
+DEBUG:root:	Predicted: (9, Num → · 6) in column 9
+DEBUG:root:	Predicted: (9, Num → · 7) in column 9
+DEBUG:root:	Predicted: (9, Num → · 8) in column 9
+DEBUG:root:	Predicted: (9, Num → · 9) in column 9
+DEBUG:root:	Predicted: (9, Num → · pi) in column 9
+DEBUG:root:	Predicted: (9, Num → · e) in column 9
+DEBUG:root:	Predicted: (9, Num → · 0.5) in column 9
+DEBUG:root:(9, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(9, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(9, Num → · 0) => SCAN
+DEBUG:root:(9, Num → · 1) => SCAN
+DEBUG:root:(9, Num → · 2) => SCAN
+DEBUG:root:(9, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (9, Num → 3 ·) in column 10
+DEBUG:root:(9, Num → · 4) => SCAN
+DEBUG:root:(9, Num → · 5) => SCAN
+DEBUG:root:(9, Num → · 6) => SCAN
+DEBUG:root:(9, Num → · 7) => SCAN
+DEBUG:root:(9, Num → · 8) => SCAN
+DEBUG:root:(9, Num → · 9) => SCAN
+DEBUG:root:(9, Num → · pi) => SCAN
+DEBUG:root:(9, Num → · e) => SCAN
+DEBUG:root:(9, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 10
+DEBUG:root:(9, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (9, FACTOR → Num ·) in column 10
+DEBUG:root:(9, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (9, TERM → FACTOR ·) in column 10
+DEBUG:root:(9, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · * FACTOR) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · / FACTOR) in column 10
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 10
+DEBUG:root:(9, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(9, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 11
+DEBUG:root:
+DEBUG:root:Processing items in column 11
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, FACTOR → · Num) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · { EXPR }) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · sqrt { EXPR }) in column 11
+DEBUG:root:(11, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (11, Num → · 0) in column 11
+DEBUG:root:	Predicted: (11, Num → · 1) in column 11
+DEBUG:root:	Predicted: (11, Num → · 2) in column 11
+DEBUG:root:	Predicted: (11, Num → · 3) in column 11
+DEBUG:root:	Predicted: (11, Num → · 4) in column 11
+DEBUG:root:	Predicted: (11, Num → · 5) in column 11
+DEBUG:root:	Predicted: (11, Num → · 6) in column 11
+DEBUG:root:	Predicted: (11, Num → · 7) in column 11
+DEBUG:root:	Predicted: (11, Num → · 8) in column 11
+DEBUG:root:	Predicted: (11, Num → · 9) in column 11
+DEBUG:root:	Predicted: (11, Num → · pi) in column 11
+DEBUG:root:	Predicted: (11, Num → · e) in column 11
+DEBUG:root:	Predicted: (11, Num → · 0.5) in column 11
+DEBUG:root:(11, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(11, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(11, Num → · 0) => SCAN
+DEBUG:root:(11, Num → · 1) => SCAN
+DEBUG:root:(11, Num → · 2) => SCAN
+DEBUG:root:	Scanned to get: (11, Num → 2 ·) in column 12
+DEBUG:root:(11, Num → · 3) => SCAN
+DEBUG:root:(11, Num → · 4) => SCAN
+DEBUG:root:(11, Num → · 5) => SCAN
+DEBUG:root:(11, Num → · 6) => SCAN
+DEBUG:root:(11, Num → · 7) => SCAN
+DEBUG:root:(11, Num → · 8) => SCAN
+DEBUG:root:(11, Num → · 9) => SCAN
+DEBUG:root:(11, Num → · pi) => SCAN
+DEBUG:root:(11, Num → · e) => SCAN
+DEBUG:root:(11, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 12
+DEBUG:root:(11, Num → 2 ·) => ATTACH
+DEBUG:root:	Attached to get: (11, FACTOR → Num ·) in column 12
+DEBUG:root:(11, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (11, TERM → FACTOR ·) in column 12
+DEBUG:root:(11, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · * FACTOR) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · / FACTOR) in column 12
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 12
+DEBUG:root:(11, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(11, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { EXPR } ·) in column 13
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 13
+DEBUG:root:(6, FACTOR → { EXPR } ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → TERM * FACTOR ·) in column 13
+DEBUG:root:(4, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 13
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 13
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:	Scanned to get: (0, EXPR → EXPR + · TERM) in column 14
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 14
+DEBUG:root:(0, EXPR → EXPR + · TERM) => PREDICT
+DEBUG:root:	Predicted: (14, TERM → · TERM * FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · TERM / FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · FACTOR) in column 14
+DEBUG:root:(14, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (14, TERM → · TERM * FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · TERM / FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · FACTOR) in column 14
+DEBUG:root:(14, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (14, TERM → · TERM * FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · TERM / FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · FACTOR) in column 14
+DEBUG:root:(14, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (14, FACTOR → · Num) in column 14
+DEBUG:root:	Predicted: (14, FACTOR → · { EXPR }) in column 14
+DEBUG:root:	Predicted: (14, FACTOR → · sqrt { EXPR }) in column 14
+DEBUG:root:(14, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (14, Num → · 0) in column 14
+DEBUG:root:	Predicted: (14, Num → · 1) in column 14
+DEBUG:root:	Predicted: (14, Num → · 2) in column 14
+DEBUG:root:	Predicted: (14, Num → · 3) in column 14
+DEBUG:root:	Predicted: (14, Num → · 4) in column 14
+DEBUG:root:	Predicted: (14, Num → · 5) in column 14
+DEBUG:root:	Predicted: (14, Num → · 6) in column 14
+DEBUG:root:	Predicted: (14, Num → · 7) in column 14
+DEBUG:root:	Predicted: (14, Num → · 8) in column 14
+DEBUG:root:	Predicted: (14, Num → · 9) in column 14
+DEBUG:root:	Predicted: (14, Num → · pi) in column 14
+DEBUG:root:	Predicted: (14, Num → · e) in column 14
+DEBUG:root:	Predicted: (14, Num → · 0.5) in column 14
+DEBUG:root:(14, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(14, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (14, FACTOR → sqrt · { EXPR }) in column 15
+DEBUG:root:(14, Num → · 0) => SCAN
+DEBUG:root:(14, Num → · 1) => SCAN
+DEBUG:root:(14, Num → · 2) => SCAN
+DEBUG:root:(14, Num → · 3) => SCAN
+DEBUG:root:(14, Num → · 4) => SCAN
+DEBUG:root:(14, Num → · 5) => SCAN
+DEBUG:root:(14, Num → · 6) => SCAN
+DEBUG:root:(14, Num → · 7) => SCAN
+DEBUG:root:(14, Num → · 8) => SCAN
+DEBUG:root:(14, Num → · 9) => SCAN
+DEBUG:root:(14, Num → · pi) => SCAN
+DEBUG:root:(14, Num → · e) => SCAN
+DEBUG:root:(14, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 15
+DEBUG:root:(14, FACTOR → sqrt · { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (14, FACTOR → sqrt { · EXPR }) in column 16
+DEBUG:root:
+DEBUG:root:Processing items in column 16
+DEBUG:root:(14, FACTOR → sqrt { · EXPR }) => PREDICT
+DEBUG:root:	Predicted: (16, EXPR → · EXPR + TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · EXPR - TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · TERM) in column 16
+DEBUG:root:(16, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (16, EXPR → · EXPR + TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · EXPR - TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · TERM) in column 16
+DEBUG:root:(16, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (16, EXPR → · EXPR + TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · EXPR - TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · TERM) in column 16
+DEBUG:root:(16, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (16, TERM → · TERM * FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · TERM / FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · FACTOR) in column 16
+DEBUG:root:(16, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (16, TERM → · TERM * FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · TERM / FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · FACTOR) in column 16
+DEBUG:root:(16, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (16, TERM → · TERM * FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · TERM / FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · FACTOR) in column 16
+DEBUG:root:(16, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (16, FACTOR → · Num) in column 16
+DEBUG:root:	Predicted: (16, FACTOR → · { EXPR }) in column 16
+DEBUG:root:	Predicted: (16, FACTOR → · sqrt { EXPR }) in column 16
+DEBUG:root:(16, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (16, Num → · 0) in column 16
+DEBUG:root:	Predicted: (16, Num → · 1) in column 16
+DEBUG:root:	Predicted: (16, Num → · 2) in column 16
+DEBUG:root:	Predicted: (16, Num → · 3) in column 16
+DEBUG:root:	Predicted: (16, Num → · 4) in column 16
+DEBUG:root:	Predicted: (16, Num → · 5) in column 16
+DEBUG:root:	Predicted: (16, Num → · 6) in column 16
+DEBUG:root:	Predicted: (16, Num → · 7) in column 16
+DEBUG:root:	Predicted: (16, Num → · 8) in column 16
+DEBUG:root:	Predicted: (16, Num → · 9) in column 16
+DEBUG:root:	Predicted: (16, Num → · pi) in column 16
+DEBUG:root:	Predicted: (16, Num → · e) in column 16
+DEBUG:root:	Predicted: (16, Num → · 0.5) in column 16
+DEBUG:root:(16, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(16, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(16, Num → · 0) => SCAN
+DEBUG:root:(16, Num → · 1) => SCAN
+DEBUG:root:(16, Num → · 2) => SCAN
+DEBUG:root:(16, Num → · 3) => SCAN
+DEBUG:root:(16, Num → · 4) => SCAN
+DEBUG:root:(16, Num → · 5) => SCAN
+DEBUG:root:(16, Num → · 6) => SCAN
+DEBUG:root:(16, Num → · 7) => SCAN
+DEBUG:root:	Scanned to get: (16, Num → 7 ·) in column 17
+DEBUG:root:(16, Num → · 8) => SCAN
+DEBUG:root:(16, Num → · 9) => SCAN
+DEBUG:root:(16, Num → · pi) => SCAN
+DEBUG:root:(16, Num → · e) => SCAN
+DEBUG:root:(16, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 17
+DEBUG:root:(16, Num → 7 ·) => ATTACH
+DEBUG:root:	Attached to get: (16, FACTOR → Num ·) in column 17
+DEBUG:root:(16, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (16, TERM → FACTOR ·) in column 17
+DEBUG:root:(16, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (16, EXPR → TERM ·) in column 17
+DEBUG:root:	Attached to get: (16, TERM → TERM · * FACTOR) in column 17
+DEBUG:root:	Attached to get: (16, TERM → TERM · / FACTOR) in column 17
+DEBUG:root:(16, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (14, FACTOR → sqrt { EXPR · }) in column 17
+DEBUG:root:	Attached to get: (16, EXPR → EXPR · + TERM) in column 17
+DEBUG:root:	Attached to get: (16, EXPR → EXPR · - TERM) in column 17
+DEBUG:root:(16, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(16, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(14, FACTOR → sqrt { EXPR · }) => SCAN
+DEBUG:root:	Scanned to get: (14, FACTOR → sqrt { EXPR } ·) in column 18
+DEBUG:root:(16, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(16, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 18
+DEBUG:root:(14, FACTOR → sqrt { EXPR } ·) => ATTACH
+DEBUG:root:	Attached to get: (14, TERM → FACTOR ·) in column 18
+DEBUG:root:(14, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 18
+DEBUG:root:	Attached to get: (14, TERM → TERM · * FACTOR) in column 18
+DEBUG:root:	Attached to get: (14, TERM → TERM · / FACTOR) in column 18
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 18
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 18
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 18
+DEBUG:root:(14, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(14, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 235, 'ATTACH': 70, 'SCAN': 18})
+ROOT → EXPR
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 3
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+TERM → TERM * FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 5
+None
+FACTOR → Num
+None
+TERM → TERM * FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+EXPR → EXPR + TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 6
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → EXPR + TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+TERM → TERM * FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+FACTOR → { EXPR }
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 5
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+FACTOR → { EXPR }
+}
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+EXPR → EXPR - TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 3
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → EXPR - TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+FACTOR → { EXPR }
+}
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+EXPR → EXPR - TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 2
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → EXPR - TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+FACTOR → { EXPR }
+}
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+FACTOR → { EXPR }
+None
+TERM → TERM * FACTOR
+None
+EXPR → EXPR + TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+36.991238210769474
+ROOT → EXPR
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 3
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+8.455324334921691
+ROOT → EXPR
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 3
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+TERM → TERM * FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+NONE
+ROOT → EXPR
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 3
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+TERM → TERM * FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 5
+None
+FACTOR → Num
+None
+TERM → TERM * FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+15.325693382592382
+ROOT → EXPR
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 3
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+TERM → TERM * FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 5
+None
+FACTOR → Num
+None
+TERM → TERM * FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+EXPR → EXPR + TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 6
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → EXPR + TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+TERM → TERM * FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+FACTOR → { EXPR }
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 5
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+FACTOR → { EXPR }
+}
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+EXPR → EXPR - TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 3
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → EXPR - TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+FACTOR → { EXPR }
+}
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+EXPR → EXPR - TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 2
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → EXPR - TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+FACTOR → { EXPR }
+}
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+FACTOR → { EXPR }
+None
+TERM → TERM * FACTOR
+None
+EXPR → EXPR + TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+EXPR → EXPR + TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+FACTOR → sqrt { EXPR }
+{
+FACTOR → sqrt { EXPR }
+EXPR
+EXPR → EXPR + TERM
+EXPR
+EXPR → EXPR - TERM
+EXPR
+EXPR → TERM
+TERM
+TERM → TERM * FACTOR
+TERM
+TERM → TERM / FACTOR
+TERM
+TERM → FACTOR
+FACTOR
+FACTOR → Num
+Num
+FACTOR → { EXPR }
+{
+FACTOR → sqrt { EXPR }
+sqrt
+Num → 0
+0
+Num → 1
+1
+Num → 2
+2
+Num → 3
+3
+Num → 4
+4
+Num → 5
+5
+Num → 6
+6
+Num → 7
+7
+Num → 8
+8
+Num → 9
+9
+Num → pi
+pi
+Num → e
+e
+Num → 0.5
+0.5
+Num → 7
+None
+FACTOR → Num
+None
+TERM → FACTOR
+None
+EXPR → TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+FACTOR → sqrt { EXPR }
+}
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+FACTOR → sqrt { EXPR }
+None
+TERM → FACTOR
+None
+EXPR → EXPR + TERM
+None
+TERM → TERM * FACTOR
+*
+TERM → TERM / FACTOR
+/
+ROOT → EXPR
+None
+EXPR → EXPR + TERM
++
+EXPR → EXPR - TERM
+-
+50.201445719776004
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 * 5 + 6 * { 5 - 3 - 2 }
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+> /home/local/QCRI/ahussein/nlp_hw/new_nlp4/nlp-hw4/parse_amir.py(156)_scan()
+-> print(item.next_symbol())
+(Pdb) DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 * 5 + 6 * { 5 - 3 - 2 }
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (2, Num → 5 ·) in column 3
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (2, FACTOR → Num ·) in column 3
+DEBUG:root:(2, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → TERM * FACTOR ·) in column 3
+DEBUG:root:(0, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 3
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 3
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:	Scanned to get: (0, EXPR → EXPR + · TERM) in column 4
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(0, EXPR → EXPR + · TERM) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, FACTOR → · Num) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · { EXPR }) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · sqrt { EXPR }) in column 4
+DEBUG:root:(4, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (4, Num → · 0) in column 4
+DEBUG:root:	Predicted: (4, Num → · 1) in column 4
+DEBUG:root:	Predicted: (4, Num → · 2) in column 4
+DEBUG:root:	Predicted: (4, Num → · 3) in column 4
+DEBUG:root:	Predicted: (4, Num → · 4) in column 4
+DEBUG:root:	Predicted: (4, Num → · 5) in column 4
+DEBUG:root:	Predicted: (4, Num → · 6) in column 4
+DEBUG:root:	Predicted: (4, Num → · 7) in column 4
+DEBUG:root:	Predicted: (4, Num → · 8) in column 4
+DEBUG:root:	Predicted: (4, Num → · 9) in column 4
+DEBUG:root:	Predicted: (4, Num → · pi) in column 4
+DEBUG:root:	Predicted: (4, Num → · e) in column 4
+DEBUG:root:	Predicted: (4, Num → · 0.5) in column 4
+DEBUG:root:(4, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(4, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(4, Num → · 0) => SCAN
+DEBUG:root:(4, Num → · 1) => SCAN
+DEBUG:root:(4, Num → · 2) => SCAN
+DEBUG:root:(4, Num → · 3) => SCAN
+DEBUG:root:(4, Num → · 4) => SCAN
+DEBUG:root:(4, Num → · 5) => SCAN
+DEBUG:root:(4, Num → · 6) => SCAN
+DEBUG:root:	Scanned to get: (4, Num → 6 ·) in column 5
+DEBUG:root:(4, Num → · 7) => SCAN
+DEBUG:root:(4, Num → · 8) => SCAN
+DEBUG:root:(4, Num → · 9) => SCAN
+DEBUG:root:(4, Num → · pi) => SCAN
+DEBUG:root:(4, Num → · e) => SCAN
+DEBUG:root:(4, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, Num → 6 ·) => ATTACH
+DEBUG:root:	Attached to get: (4, FACTOR → Num ·) in column 5
+DEBUG:root:(4, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → FACTOR ·) in column 5
+DEBUG:root:(4, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 5
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 5
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (4, TERM → TERM * · FACTOR) in column 6
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:(4, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (6, FACTOR → · Num) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · { EXPR }) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · sqrt { EXPR }) in column 6
+DEBUG:root:(6, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (6, Num → · 0) in column 6
+DEBUG:root:	Predicted: (6, Num → · 1) in column 6
+DEBUG:root:	Predicted: (6, Num → · 2) in column 6
+DEBUG:root:	Predicted: (6, Num → · 3) in column 6
+DEBUG:root:	Predicted: (6, Num → · 4) in column 6
+DEBUG:root:	Predicted: (6, Num → · 5) in column 6
+DEBUG:root:	Predicted: (6, Num → · 6) in column 6
+DEBUG:root:	Predicted: (6, Num → · 7) in column 6
+DEBUG:root:	Predicted: (6, Num → · 8) in column 6
+DEBUG:root:	Predicted: (6, Num → · 9) in column 6
+DEBUG:root:	Predicted: (6, Num → · pi) in column 6
+DEBUG:root:	Predicted: (6, Num → · e) in column 6
+DEBUG:root:	Predicted: (6, Num → · 0.5) in column 6
+DEBUG:root:(6, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { · EXPR }) in column 7
+DEBUG:root:(6, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(6, Num → · 0) => SCAN
+DEBUG:root:(6, Num → · 1) => SCAN
+DEBUG:root:(6, Num → · 2) => SCAN
+DEBUG:root:(6, Num → · 3) => SCAN
+DEBUG:root:(6, Num → · 4) => SCAN
+DEBUG:root:(6, Num → · 5) => SCAN
+DEBUG:root:(6, Num → · 6) => SCAN
+DEBUG:root:(6, Num → · 7) => SCAN
+DEBUG:root:(6, Num → · 8) => SCAN
+DEBUG:root:(6, Num → · 9) => SCAN
+DEBUG:root:(6, Num → · pi) => SCAN
+DEBUG:root:(6, Num → · e) => SCAN
+DEBUG:root:(6, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 7
+DEBUG:root:(6, FACTOR → { · EXPR }) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, FACTOR → · Num) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · { EXPR }) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · sqrt { EXPR }) in column 7
+DEBUG:root:(7, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (7, Num → · 0) in column 7
+DEBUG:root:	Predicted: (7, Num → · 1) in column 7
+DEBUG:root:	Predicted: (7, Num → · 2) in column 7
+DEBUG:root:	Predicted: (7, Num → · 3) in column 7
+DEBUG:root:	Predicted: (7, Num → · 4) in column 7
+DEBUG:root:	Predicted: (7, Num → · 5) in column 7
+DEBUG:root:	Predicted: (7, Num → · 6) in column 7
+DEBUG:root:	Predicted: (7, Num → · 7) in column 7
+DEBUG:root:	Predicted: (7, Num → · 8) in column 7
+DEBUG:root:	Predicted: (7, Num → · 9) in column 7
+DEBUG:root:	Predicted: (7, Num → · pi) in column 7
+DEBUG:root:	Predicted: (7, Num → · e) in column 7
+DEBUG:root:	Predicted: (7, Num → · 0.5) in column 7
+DEBUG:root:(7, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(7, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(7, Num → · 0) => SCAN
+DEBUG:root:(7, Num → · 1) => SCAN
+DEBUG:root:(7, Num → · 2) => SCAN
+DEBUG:root:(7, Num → · 3) => SCAN
+DEBUG:root:(7, Num → · 4) => SCAN
+DEBUG:root:(7, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (7, Num → 5 ·) in column 8
+DEBUG:root:(7, Num → · 6) => SCAN
+DEBUG:root:(7, Num → · 7) => SCAN
+DEBUG:root:(7, Num → · 8) => SCAN
+DEBUG:root:(7, Num → · 9) => SCAN
+DEBUG:root:(7, Num → · pi) => SCAN
+DEBUG:root:(7, Num → · e) => SCAN
+DEBUG:root:(7, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 8
+DEBUG:root:(7, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (7, FACTOR → Num ·) in column 8
+DEBUG:root:(7, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (7, TERM → FACTOR ·) in column 8
+DEBUG:root:(7, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → TERM ·) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · * FACTOR) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · / FACTOR) in column 8
+DEBUG:root:(7, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 8
+DEBUG:root:(7, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(7, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 9
+DEBUG:root:
+DEBUG:root:Processing items in column 9
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, FACTOR → · Num) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · { EXPR }) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · sqrt { EXPR }) in column 9
+DEBUG:root:(9, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (9, Num → · 0) in column 9
+DEBUG:root:	Predicted: (9, Num → · 1) in column 9
+DEBUG:root:	Predicted: (9, Num → · 2) in column 9
+DEBUG:root:	Predicted: (9, Num → · 3) in column 9
+DEBUG:root:	Predicted: (9, Num → · 4) in column 9
+DEBUG:root:	Predicted: (9, Num → · 5) in column 9
+DEBUG:root:	Predicted: (9, Num → · 6) in column 9
+DEBUG:root:	Predicted: (9, Num → · 7) in column 9
+DEBUG:root:	Predicted: (9, Num → · 8) in column 9
+DEBUG:root:	Predicted: (9, Num → · 9) in column 9
+DEBUG:root:	Predicted: (9, Num → · pi) in column 9
+DEBUG:root:	Predicted: (9, Num → · e) in column 9
+DEBUG:root:	Predicted: (9, Num → · 0.5) in column 9
+DEBUG:root:(9, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(9, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(9, Num → · 0) => SCAN
+DEBUG:root:(9, Num → · 1) => SCAN
+DEBUG:root:(9, Num → · 2) => SCAN
+DEBUG:root:(9, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (9, Num → 3 ·) in column 10
+DEBUG:root:(9, Num → · 4) => SCAN
+DEBUG:root:(9, Num → · 5) => SCAN
+DEBUG:root:(9, Num → · 6) => SCAN
+DEBUG:root:(9, Num → · 7) => SCAN
+DEBUG:root:(9, Num → · 8) => SCAN
+DEBUG:root:(9, Num → · 9) => SCAN
+DEBUG:root:(9, Num → · pi) => SCAN
+DEBUG:root:(9, Num → · e) => SCAN
+DEBUG:root:(9, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 10
+DEBUG:root:(9, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (9, FACTOR → Num ·) in column 10
+DEBUG:root:(9, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (9, TERM → FACTOR ·) in column 10
+DEBUG:root:(9, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · * FACTOR) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · / FACTOR) in column 10
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 10
+DEBUG:root:(9, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(9, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 11
+DEBUG:root:
+DEBUG:root:Processing items in column 11
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, FACTOR → · Num) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · { EXPR }) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · sqrt { EXPR }) in column 11
+DEBUG:root:(11, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (11, Num → · 0) in column 11
+DEBUG:root:	Predicted: (11, Num → · 1) in column 11
+DEBUG:root:	Predicted: (11, Num → · 2) in column 11
+DEBUG:root:	Predicted: (11, Num → · 3) in column 11
+DEBUG:root:	Predicted: (11, Num → · 4) in column 11
+DEBUG:root:	Predicted: (11, Num → · 5) in column 11
+DEBUG:root:	Predicted: (11, Num → · 6) in column 11
+DEBUG:root:	Predicted: (11, Num → · 7) in column 11
+DEBUG:root:	Predicted: (11, Num → · 8) in column 11
+DEBUG:root:	Predicted: (11, Num → · 9) in column 11
+DEBUG:root:	Predicted: (11, Num → · pi) in column 11
+DEBUG:root:	Predicted: (11, Num → · e) in column 11
+DEBUG:root:	Predicted: (11, Num → · 0.5) in column 11
+DEBUG:root:(11, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(11, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(11, Num → · 0) => SCAN
+DEBUG:root:(11, Num → · 1) => SCAN
+DEBUG:root:(11, Num → · 2) => SCAN
+DEBUG:root:	Scanned to get: (11, Num → 2 ·) in column 12
+DEBUG:root:(11, Num → · 3) => SCAN
+DEBUG:root:(11, Num → · 4) => SCAN
+DEBUG:root:(11, Num → · 5) => SCAN
+DEBUG:root:(11, Num → · 6) => SCAN
+DEBUG:root:(11, Num → · 7) => SCAN
+DEBUG:root:(11, Num → · 8) => SCAN
+DEBUG:root:(11, Num → · 9) => SCAN
+DEBUG:root:(11, Num → · pi) => SCAN
+DEBUG:root:(11, Num → · e) => SCAN
+DEBUG:root:(11, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 12
+DEBUG:root:(11, Num → 2 ·) => ATTACH
+DEBUG:root:	Attached to get: (11, FACTOR → Num ·) in column 12
+DEBUG:root:(11, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (11, TERM → FACTOR ·) in column 12
+DEBUG:root:(11, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · * FACTOR) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · / FACTOR) in column 12
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 12
+DEBUG:root:(11, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(11, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { EXPR } ·) in column 13
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 13
+DEBUG:root:(6, FACTOR → { EXPR } ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → TERM * FACTOR ·) in column 13
+DEBUG:root:(4, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 13
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 13
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 176, 'ATTACH': 55, 'SCAN': 13})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 35, 'ATTACH': 8, 'SCAN': 1})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 *
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 51, 'ATTACH': 8, 'SCAN': 2})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 * 5
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (2, Num → 5 ·) in column 3
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (2, FACTOR → Num ·) in column 3
+DEBUG:root:(2, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → TERM * FACTOR ·) in column 3
+DEBUG:root:(0, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 3
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 3
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 51, 'ATTACH': 16, 'SCAN': 3})
+DEBUG:root:======================================================================
+DEBUG:root:Parsing sentence: 3 * 5 + 6 * { 5 - 3 - 2 } + sqrt { 7 }
+DEBUG:root:	Predicted: (0, ROOT → · EXPR) in column 0
+DEBUG:root:
+DEBUG:root:Processing items in column 0
+DEBUG:root:(0, ROOT → · EXPR) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (0, EXPR → · EXPR + TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · EXPR - TERM) in column 0
+DEBUG:root:	Predicted: (0, EXPR → · TERM) in column 0
+DEBUG:root:(0, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, TERM → · TERM * FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · TERM / FACTOR) in column 0
+DEBUG:root:	Predicted: (0, TERM → · FACTOR) in column 0
+DEBUG:root:(0, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (0, FACTOR → · Num) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · { EXPR }) in column 0
+DEBUG:root:	Predicted: (0, FACTOR → · sqrt { EXPR }) in column 0
+DEBUG:root:(0, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (0, Num → · 0) in column 0
+DEBUG:root:	Predicted: (0, Num → · 1) in column 0
+DEBUG:root:	Predicted: (0, Num → · 2) in column 0
+DEBUG:root:	Predicted: (0, Num → · 3) in column 0
+DEBUG:root:	Predicted: (0, Num → · 4) in column 0
+DEBUG:root:	Predicted: (0, Num → · 5) in column 0
+DEBUG:root:	Predicted: (0, Num → · 6) in column 0
+DEBUG:root:	Predicted: (0, Num → · 7) in column 0
+DEBUG:root:	Predicted: (0, Num → · 8) in column 0
+DEBUG:root:	Predicted: (0, Num → · 9) in column 0
+DEBUG:root:	Predicted: (0, Num → · pi) in column 0
+DEBUG:root:	Predicted: (0, Num → · e) in column 0
+DEBUG:root:	Predicted: (0, Num → · 0.5) in column 0
+DEBUG:root:(0, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(0, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(0, Num → · 0) => SCAN
+DEBUG:root:(0, Num → · 1) => SCAN
+DEBUG:root:(0, Num → · 2) => SCAN
+DEBUG:root:(0, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (0, Num → 3 ·) in column 1
+DEBUG:root:(0, Num → · 4) => SCAN
+DEBUG:root:(0, Num → · 5) => SCAN
+DEBUG:root:(0, Num → · 6) => SCAN
+DEBUG:root:(0, Num → · 7) => SCAN
+DEBUG:root:(0, Num → · 8) => SCAN
+DEBUG:root:(0, Num → · 9) => SCAN
+DEBUG:root:(0, Num → · pi) => SCAN
+DEBUG:root:(0, Num → · e) => SCAN
+DEBUG:root:(0, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 1
+DEBUG:root:(0, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (0, FACTOR → Num ·) in column 1
+DEBUG:root:(0, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → FACTOR ·) in column 1
+DEBUG:root:(0, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 1
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 1
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 1
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 1
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (0, TERM → TERM * · FACTOR) in column 2
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 2
+DEBUG:root:(0, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (2, FACTOR → · Num) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · { EXPR }) in column 2
+DEBUG:root:	Predicted: (2, FACTOR → · sqrt { EXPR }) in column 2
+DEBUG:root:(2, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (2, Num → · 0) in column 2
+DEBUG:root:	Predicted: (2, Num → · 1) in column 2
+DEBUG:root:	Predicted: (2, Num → · 2) in column 2
+DEBUG:root:	Predicted: (2, Num → · 3) in column 2
+DEBUG:root:	Predicted: (2, Num → · 4) in column 2
+DEBUG:root:	Predicted: (2, Num → · 5) in column 2
+DEBUG:root:	Predicted: (2, Num → · 6) in column 2
+DEBUG:root:	Predicted: (2, Num → · 7) in column 2
+DEBUG:root:	Predicted: (2, Num → · 8) in column 2
+DEBUG:root:	Predicted: (2, Num → · 9) in column 2
+DEBUG:root:	Predicted: (2, Num → · pi) in column 2
+DEBUG:root:	Predicted: (2, Num → · e) in column 2
+DEBUG:root:	Predicted: (2, Num → · 0.5) in column 2
+DEBUG:root:(2, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(2, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(2, Num → · 0) => SCAN
+DEBUG:root:(2, Num → · 1) => SCAN
+DEBUG:root:(2, Num → · 2) => SCAN
+DEBUG:root:(2, Num → · 3) => SCAN
+DEBUG:root:(2, Num → · 4) => SCAN
+DEBUG:root:(2, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (2, Num → 5 ·) in column 3
+DEBUG:root:(2, Num → · 6) => SCAN
+DEBUG:root:(2, Num → · 7) => SCAN
+DEBUG:root:(2, Num → · 8) => SCAN
+DEBUG:root:(2, Num → · 9) => SCAN
+DEBUG:root:(2, Num → · pi) => SCAN
+DEBUG:root:(2, Num → · e) => SCAN
+DEBUG:root:(2, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 3
+DEBUG:root:(2, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (2, FACTOR → Num ·) in column 3
+DEBUG:root:(2, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (0, TERM → TERM * FACTOR ·) in column 3
+DEBUG:root:(0, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → TERM ·) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · * FACTOR) in column 3
+DEBUG:root:	Attached to get: (0, TERM → TERM · / FACTOR) in column 3
+DEBUG:root:(0, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 3
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 3
+DEBUG:root:(0, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(0, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:	Scanned to get: (0, EXPR → EXPR + · TERM) in column 4
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 4
+DEBUG:root:(0, EXPR → EXPR + · TERM) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, TERM → · TERM * FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · TERM / FACTOR) in column 4
+DEBUG:root:	Predicted: (4, TERM → · FACTOR) in column 4
+DEBUG:root:(4, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (4, FACTOR → · Num) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · { EXPR }) in column 4
+DEBUG:root:	Predicted: (4, FACTOR → · sqrt { EXPR }) in column 4
+DEBUG:root:(4, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (4, Num → · 0) in column 4
+DEBUG:root:	Predicted: (4, Num → · 1) in column 4
+DEBUG:root:	Predicted: (4, Num → · 2) in column 4
+DEBUG:root:	Predicted: (4, Num → · 3) in column 4
+DEBUG:root:	Predicted: (4, Num → · 4) in column 4
+DEBUG:root:	Predicted: (4, Num → · 5) in column 4
+DEBUG:root:	Predicted: (4, Num → · 6) in column 4
+DEBUG:root:	Predicted: (4, Num → · 7) in column 4
+DEBUG:root:	Predicted: (4, Num → · 8) in column 4
+DEBUG:root:	Predicted: (4, Num → · 9) in column 4
+DEBUG:root:	Predicted: (4, Num → · pi) in column 4
+DEBUG:root:	Predicted: (4, Num → · e) in column 4
+DEBUG:root:	Predicted: (4, Num → · 0.5) in column 4
+DEBUG:root:(4, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(4, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(4, Num → · 0) => SCAN
+DEBUG:root:(4, Num → · 1) => SCAN
+DEBUG:root:(4, Num → · 2) => SCAN
+DEBUG:root:(4, Num → · 3) => SCAN
+DEBUG:root:(4, Num → · 4) => SCAN
+DEBUG:root:(4, Num → · 5) => SCAN
+DEBUG:root:(4, Num → · 6) => SCAN
+DEBUG:root:	Scanned to get: (4, Num → 6 ·) in column 5
+DEBUG:root:(4, Num → · 7) => SCAN
+DEBUG:root:(4, Num → · 8) => SCAN
+DEBUG:root:(4, Num → · 9) => SCAN
+DEBUG:root:(4, Num → · pi) => SCAN
+DEBUG:root:(4, Num → · e) => SCAN
+DEBUG:root:(4, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 5
+DEBUG:root:(4, Num → 6 ·) => ATTACH
+DEBUG:root:	Attached to get: (4, FACTOR → Num ·) in column 5
+DEBUG:root:(4, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → FACTOR ·) in column 5
+DEBUG:root:(4, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 5
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 5
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 5
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 5
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:	Scanned to get: (4, TERM → TERM * · FACTOR) in column 6
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 6
+DEBUG:root:(4, TERM → TERM * · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (6, FACTOR → · Num) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · { EXPR }) in column 6
+DEBUG:root:	Predicted: (6, FACTOR → · sqrt { EXPR }) in column 6
+DEBUG:root:(6, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (6, Num → · 0) in column 6
+DEBUG:root:	Predicted: (6, Num → · 1) in column 6
+DEBUG:root:	Predicted: (6, Num → · 2) in column 6
+DEBUG:root:	Predicted: (6, Num → · 3) in column 6
+DEBUG:root:	Predicted: (6, Num → · 4) in column 6
+DEBUG:root:	Predicted: (6, Num → · 5) in column 6
+DEBUG:root:	Predicted: (6, Num → · 6) in column 6
+DEBUG:root:	Predicted: (6, Num → · 7) in column 6
+DEBUG:root:	Predicted: (6, Num → · 8) in column 6
+DEBUG:root:	Predicted: (6, Num → · 9) in column 6
+DEBUG:root:	Predicted: (6, Num → · pi) in column 6
+DEBUG:root:	Predicted: (6, Num → · e) in column 6
+DEBUG:root:	Predicted: (6, Num → · 0.5) in column 6
+DEBUG:root:(6, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { · EXPR }) in column 7
+DEBUG:root:(6, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(6, Num → · 0) => SCAN
+DEBUG:root:(6, Num → · 1) => SCAN
+DEBUG:root:(6, Num → · 2) => SCAN
+DEBUG:root:(6, Num → · 3) => SCAN
+DEBUG:root:(6, Num → · 4) => SCAN
+DEBUG:root:(6, Num → · 5) => SCAN
+DEBUG:root:(6, Num → · 6) => SCAN
+DEBUG:root:(6, Num → · 7) => SCAN
+DEBUG:root:(6, Num → · 8) => SCAN
+DEBUG:root:(6, Num → · 9) => SCAN
+DEBUG:root:(6, Num → · pi) => SCAN
+DEBUG:root:(6, Num → · e) => SCAN
+DEBUG:root:(6, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 7
+DEBUG:root:(6, FACTOR → { · EXPR }) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (7, EXPR → · EXPR + TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · EXPR - TERM) in column 7
+DEBUG:root:	Predicted: (7, EXPR → · TERM) in column 7
+DEBUG:root:(7, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, TERM → · TERM * FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · TERM / FACTOR) in column 7
+DEBUG:root:	Predicted: (7, TERM → · FACTOR) in column 7
+DEBUG:root:(7, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (7, FACTOR → · Num) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · { EXPR }) in column 7
+DEBUG:root:	Predicted: (7, FACTOR → · sqrt { EXPR }) in column 7
+DEBUG:root:(7, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (7, Num → · 0) in column 7
+DEBUG:root:	Predicted: (7, Num → · 1) in column 7
+DEBUG:root:	Predicted: (7, Num → · 2) in column 7
+DEBUG:root:	Predicted: (7, Num → · 3) in column 7
+DEBUG:root:	Predicted: (7, Num → · 4) in column 7
+DEBUG:root:	Predicted: (7, Num → · 5) in column 7
+DEBUG:root:	Predicted: (7, Num → · 6) in column 7
+DEBUG:root:	Predicted: (7, Num → · 7) in column 7
+DEBUG:root:	Predicted: (7, Num → · 8) in column 7
+DEBUG:root:	Predicted: (7, Num → · 9) in column 7
+DEBUG:root:	Predicted: (7, Num → · pi) in column 7
+DEBUG:root:	Predicted: (7, Num → · e) in column 7
+DEBUG:root:	Predicted: (7, Num → · 0.5) in column 7
+DEBUG:root:(7, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(7, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(7, Num → · 0) => SCAN
+DEBUG:root:(7, Num → · 1) => SCAN
+DEBUG:root:(7, Num → · 2) => SCAN
+DEBUG:root:(7, Num → · 3) => SCAN
+DEBUG:root:(7, Num → · 4) => SCAN
+DEBUG:root:(7, Num → · 5) => SCAN
+DEBUG:root:	Scanned to get: (7, Num → 5 ·) in column 8
+DEBUG:root:(7, Num → · 6) => SCAN
+DEBUG:root:(7, Num → · 7) => SCAN
+DEBUG:root:(7, Num → · 8) => SCAN
+DEBUG:root:(7, Num → · 9) => SCAN
+DEBUG:root:(7, Num → · pi) => SCAN
+DEBUG:root:(7, Num → · e) => SCAN
+DEBUG:root:(7, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 8
+DEBUG:root:(7, Num → 5 ·) => ATTACH
+DEBUG:root:	Attached to get: (7, FACTOR → Num ·) in column 8
+DEBUG:root:(7, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (7, TERM → FACTOR ·) in column 8
+DEBUG:root:(7, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → TERM ·) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · * FACTOR) in column 8
+DEBUG:root:	Attached to get: (7, TERM → TERM · / FACTOR) in column 8
+DEBUG:root:(7, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 8
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 8
+DEBUG:root:(7, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(7, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 9
+DEBUG:root:
+DEBUG:root:Processing items in column 9
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, TERM → · TERM * FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · TERM / FACTOR) in column 9
+DEBUG:root:	Predicted: (9, TERM → · FACTOR) in column 9
+DEBUG:root:(9, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (9, FACTOR → · Num) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · { EXPR }) in column 9
+DEBUG:root:	Predicted: (9, FACTOR → · sqrt { EXPR }) in column 9
+DEBUG:root:(9, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (9, Num → · 0) in column 9
+DEBUG:root:	Predicted: (9, Num → · 1) in column 9
+DEBUG:root:	Predicted: (9, Num → · 2) in column 9
+DEBUG:root:	Predicted: (9, Num → · 3) in column 9
+DEBUG:root:	Predicted: (9, Num → · 4) in column 9
+DEBUG:root:	Predicted: (9, Num → · 5) in column 9
+DEBUG:root:	Predicted: (9, Num → · 6) in column 9
+DEBUG:root:	Predicted: (9, Num → · 7) in column 9
+DEBUG:root:	Predicted: (9, Num → · 8) in column 9
+DEBUG:root:	Predicted: (9, Num → · 9) in column 9
+DEBUG:root:	Predicted: (9, Num → · pi) in column 9
+DEBUG:root:	Predicted: (9, Num → · e) in column 9
+DEBUG:root:	Predicted: (9, Num → · 0.5) in column 9
+DEBUG:root:(9, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(9, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(9, Num → · 0) => SCAN
+DEBUG:root:(9, Num → · 1) => SCAN
+DEBUG:root:(9, Num → · 2) => SCAN
+DEBUG:root:(9, Num → · 3) => SCAN
+DEBUG:root:	Scanned to get: (9, Num → 3 ·) in column 10
+DEBUG:root:(9, Num → · 4) => SCAN
+DEBUG:root:(9, Num → · 5) => SCAN
+DEBUG:root:(9, Num → · 6) => SCAN
+DEBUG:root:(9, Num → · 7) => SCAN
+DEBUG:root:(9, Num → · 8) => SCAN
+DEBUG:root:(9, Num → · 9) => SCAN
+DEBUG:root:(9, Num → · pi) => SCAN
+DEBUG:root:(9, Num → · e) => SCAN
+DEBUG:root:(9, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 10
+DEBUG:root:(9, Num → 3 ·) => ATTACH
+DEBUG:root:	Attached to get: (9, FACTOR → Num ·) in column 10
+DEBUG:root:(9, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (9, TERM → FACTOR ·) in column 10
+DEBUG:root:(9, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · * FACTOR) in column 10
+DEBUG:root:	Attached to get: (9, TERM → TERM · / FACTOR) in column 10
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 10
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 10
+DEBUG:root:(9, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(9, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:	Scanned to get: (7, EXPR → EXPR - · TERM) in column 11
+DEBUG:root:
+DEBUG:root:Processing items in column 11
+DEBUG:root:(7, EXPR → EXPR - · TERM) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, TERM → · TERM * FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · TERM / FACTOR) in column 11
+DEBUG:root:	Predicted: (11, TERM → · FACTOR) in column 11
+DEBUG:root:(11, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (11, FACTOR → · Num) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · { EXPR }) in column 11
+DEBUG:root:	Predicted: (11, FACTOR → · sqrt { EXPR }) in column 11
+DEBUG:root:(11, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (11, Num → · 0) in column 11
+DEBUG:root:	Predicted: (11, Num → · 1) in column 11
+DEBUG:root:	Predicted: (11, Num → · 2) in column 11
+DEBUG:root:	Predicted: (11, Num → · 3) in column 11
+DEBUG:root:	Predicted: (11, Num → · 4) in column 11
+DEBUG:root:	Predicted: (11, Num → · 5) in column 11
+DEBUG:root:	Predicted: (11, Num → · 6) in column 11
+DEBUG:root:	Predicted: (11, Num → · 7) in column 11
+DEBUG:root:	Predicted: (11, Num → · 8) in column 11
+DEBUG:root:	Predicted: (11, Num → · 9) in column 11
+DEBUG:root:	Predicted: (11, Num → · pi) in column 11
+DEBUG:root:	Predicted: (11, Num → · e) in column 11
+DEBUG:root:	Predicted: (11, Num → · 0.5) in column 11
+DEBUG:root:(11, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(11, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(11, Num → · 0) => SCAN
+DEBUG:root:(11, Num → · 1) => SCAN
+DEBUG:root:(11, Num → · 2) => SCAN
+DEBUG:root:	Scanned to get: (11, Num → 2 ·) in column 12
+DEBUG:root:(11, Num → · 3) => SCAN
+DEBUG:root:(11, Num → · 4) => SCAN
+DEBUG:root:(11, Num → · 5) => SCAN
+DEBUG:root:(11, Num → · 6) => SCAN
+DEBUG:root:(11, Num → · 7) => SCAN
+DEBUG:root:(11, Num → · 8) => SCAN
+DEBUG:root:(11, Num → · 9) => SCAN
+DEBUG:root:(11, Num → · pi) => SCAN
+DEBUG:root:(11, Num → · e) => SCAN
+DEBUG:root:(11, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 12
+DEBUG:root:(11, Num → 2 ·) => ATTACH
+DEBUG:root:	Attached to get: (11, FACTOR → Num ·) in column 12
+DEBUG:root:(11, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (11, TERM → FACTOR ·) in column 12
+DEBUG:root:(11, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (7, EXPR → EXPR - TERM ·) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · * FACTOR) in column 12
+DEBUG:root:	Attached to get: (11, TERM → TERM · / FACTOR) in column 12
+DEBUG:root:(7, EXPR → EXPR - TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (6, FACTOR → { EXPR · }) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · + TERM) in column 12
+DEBUG:root:	Attached to get: (7, EXPR → EXPR · - TERM) in column 12
+DEBUG:root:(11, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(11, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(6, FACTOR → { EXPR · }) => SCAN
+DEBUG:root:	Scanned to get: (6, FACTOR → { EXPR } ·) in column 13
+DEBUG:root:(7, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(7, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 13
+DEBUG:root:(6, FACTOR → { EXPR } ·) => ATTACH
+DEBUG:root:	Attached to get: (4, TERM → TERM * FACTOR ·) in column 13
+DEBUG:root:(4, TERM → TERM * FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · * FACTOR) in column 13
+DEBUG:root:	Attached to get: (4, TERM → TERM · / FACTOR) in column 13
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 13
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 13
+DEBUG:root:(4, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(4, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:	Scanned to get: (0, EXPR → EXPR + · TERM) in column 14
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 14
+DEBUG:root:(0, EXPR → EXPR + · TERM) => PREDICT
+DEBUG:root:	Predicted: (14, TERM → · TERM * FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · TERM / FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · FACTOR) in column 14
+DEBUG:root:(14, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (14, TERM → · TERM * FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · TERM / FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · FACTOR) in column 14
+DEBUG:root:(14, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (14, TERM → · TERM * FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · TERM / FACTOR) in column 14
+DEBUG:root:	Predicted: (14, TERM → · FACTOR) in column 14
+DEBUG:root:(14, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (14, FACTOR → · Num) in column 14
+DEBUG:root:	Predicted: (14, FACTOR → · { EXPR }) in column 14
+DEBUG:root:	Predicted: (14, FACTOR → · sqrt { EXPR }) in column 14
+DEBUG:root:(14, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (14, Num → · 0) in column 14
+DEBUG:root:	Predicted: (14, Num → · 1) in column 14
+DEBUG:root:	Predicted: (14, Num → · 2) in column 14
+DEBUG:root:	Predicted: (14, Num → · 3) in column 14
+DEBUG:root:	Predicted: (14, Num → · 4) in column 14
+DEBUG:root:	Predicted: (14, Num → · 5) in column 14
+DEBUG:root:	Predicted: (14, Num → · 6) in column 14
+DEBUG:root:	Predicted: (14, Num → · 7) in column 14
+DEBUG:root:	Predicted: (14, Num → · 8) in column 14
+DEBUG:root:	Predicted: (14, Num → · 9) in column 14
+DEBUG:root:	Predicted: (14, Num → · pi) in column 14
+DEBUG:root:	Predicted: (14, Num → · e) in column 14
+DEBUG:root:	Predicted: (14, Num → · 0.5) in column 14
+DEBUG:root:(14, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(14, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (14, FACTOR → sqrt · { EXPR }) in column 15
+DEBUG:root:(14, Num → · 0) => SCAN
+DEBUG:root:(14, Num → · 1) => SCAN
+DEBUG:root:(14, Num → · 2) => SCAN
+DEBUG:root:(14, Num → · 3) => SCAN
+DEBUG:root:(14, Num → · 4) => SCAN
+DEBUG:root:(14, Num → · 5) => SCAN
+DEBUG:root:(14, Num → · 6) => SCAN
+DEBUG:root:(14, Num → · 7) => SCAN
+DEBUG:root:(14, Num → · 8) => SCAN
+DEBUG:root:(14, Num → · 9) => SCAN
+DEBUG:root:(14, Num → · pi) => SCAN
+DEBUG:root:(14, Num → · e) => SCAN
+DEBUG:root:(14, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 15
+DEBUG:root:(14, FACTOR → sqrt · { EXPR }) => SCAN
+DEBUG:root:	Scanned to get: (14, FACTOR → sqrt { · EXPR }) in column 16
+DEBUG:root:
+DEBUG:root:Processing items in column 16
+DEBUG:root:(14, FACTOR → sqrt { · EXPR }) => PREDICT
+DEBUG:root:	Predicted: (16, EXPR → · EXPR + TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · EXPR - TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · TERM) in column 16
+DEBUG:root:(16, EXPR → · EXPR + TERM) => PREDICT
+DEBUG:root:	Predicted: (16, EXPR → · EXPR + TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · EXPR - TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · TERM) in column 16
+DEBUG:root:(16, EXPR → · EXPR - TERM) => PREDICT
+DEBUG:root:	Predicted: (16, EXPR → · EXPR + TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · EXPR - TERM) in column 16
+DEBUG:root:	Predicted: (16, EXPR → · TERM) in column 16
+DEBUG:root:(16, EXPR → · TERM) => PREDICT
+DEBUG:root:	Predicted: (16, TERM → · TERM * FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · TERM / FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · FACTOR) in column 16
+DEBUG:root:(16, TERM → · TERM * FACTOR) => PREDICT
+DEBUG:root:	Predicted: (16, TERM → · TERM * FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · TERM / FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · FACTOR) in column 16
+DEBUG:root:(16, TERM → · TERM / FACTOR) => PREDICT
+DEBUG:root:	Predicted: (16, TERM → · TERM * FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · TERM / FACTOR) in column 16
+DEBUG:root:	Predicted: (16, TERM → · FACTOR) in column 16
+DEBUG:root:(16, TERM → · FACTOR) => PREDICT
+DEBUG:root:	Predicted: (16, FACTOR → · Num) in column 16
+DEBUG:root:	Predicted: (16, FACTOR → · { EXPR }) in column 16
+DEBUG:root:	Predicted: (16, FACTOR → · sqrt { EXPR }) in column 16
+DEBUG:root:(16, FACTOR → · Num) => PREDICT
+DEBUG:root:	Predicted: (16, Num → · 0) in column 16
+DEBUG:root:	Predicted: (16, Num → · 1) in column 16
+DEBUG:root:	Predicted: (16, Num → · 2) in column 16
+DEBUG:root:	Predicted: (16, Num → · 3) in column 16
+DEBUG:root:	Predicted: (16, Num → · 4) in column 16
+DEBUG:root:	Predicted: (16, Num → · 5) in column 16
+DEBUG:root:	Predicted: (16, Num → · 6) in column 16
+DEBUG:root:	Predicted: (16, Num → · 7) in column 16
+DEBUG:root:	Predicted: (16, Num → · 8) in column 16
+DEBUG:root:	Predicted: (16, Num → · 9) in column 16
+DEBUG:root:	Predicted: (16, Num → · pi) in column 16
+DEBUG:root:	Predicted: (16, Num → · e) in column 16
+DEBUG:root:	Predicted: (16, Num → · 0.5) in column 16
+DEBUG:root:(16, FACTOR → · { EXPR }) => SCAN
+DEBUG:root:(16, FACTOR → · sqrt { EXPR }) => SCAN
+DEBUG:root:(16, Num → · 0) => SCAN
+DEBUG:root:(16, Num → · 1) => SCAN
+DEBUG:root:(16, Num → · 2) => SCAN
+DEBUG:root:(16, Num → · 3) => SCAN
+DEBUG:root:(16, Num → · 4) => SCAN
+DEBUG:root:(16, Num → · 5) => SCAN
+DEBUG:root:(16, Num → · 6) => SCAN
+DEBUG:root:(16, Num → · 7) => SCAN
+DEBUG:root:	Scanned to get: (16, Num → 7 ·) in column 17
+DEBUG:root:(16, Num → · 8) => SCAN
+DEBUG:root:(16, Num → · 9) => SCAN
+DEBUG:root:(16, Num → · pi) => SCAN
+DEBUG:root:(16, Num → · e) => SCAN
+DEBUG:root:(16, Num → · 0.5) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 17
+DEBUG:root:(16, Num → 7 ·) => ATTACH
+DEBUG:root:	Attached to get: (16, FACTOR → Num ·) in column 17
+DEBUG:root:(16, FACTOR → Num ·) => ATTACH
+DEBUG:root:	Attached to get: (16, TERM → FACTOR ·) in column 17
+DEBUG:root:(16, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (16, EXPR → TERM ·) in column 17
+DEBUG:root:	Attached to get: (16, TERM → TERM · * FACTOR) in column 17
+DEBUG:root:	Attached to get: (16, TERM → TERM · / FACTOR) in column 17
+DEBUG:root:(16, EXPR → TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (14, FACTOR → sqrt { EXPR · }) in column 17
+DEBUG:root:	Attached to get: (16, EXPR → EXPR · + TERM) in column 17
+DEBUG:root:	Attached to get: (16, EXPR → EXPR · - TERM) in column 17
+DEBUG:root:(16, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(16, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(14, FACTOR → sqrt { EXPR · }) => SCAN
+DEBUG:root:	Scanned to get: (14, FACTOR → sqrt { EXPR } ·) in column 18
+DEBUG:root:(16, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(16, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:
+DEBUG:root:Processing items in column 18
+DEBUG:root:(14, FACTOR → sqrt { EXPR } ·) => ATTACH
+DEBUG:root:	Attached to get: (14, TERM → FACTOR ·) in column 18
+DEBUG:root:(14, TERM → FACTOR ·) => ATTACH
+DEBUG:root:	Attached to get: (0, EXPR → EXPR + TERM ·) in column 18
+DEBUG:root:	Attached to get: (14, TERM → TERM · * FACTOR) in column 18
+DEBUG:root:	Attached to get: (14, TERM → TERM · / FACTOR) in column 18
+DEBUG:root:(0, EXPR → EXPR + TERM ·) => ATTACH
+DEBUG:root:	Attached to get: (0, ROOT → EXPR ·) in column 18
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · + TERM) in column 18
+DEBUG:root:	Attached to get: (0, EXPR → EXPR · - TERM) in column 18
+DEBUG:root:(14, TERM → TERM · * FACTOR) => SCAN
+DEBUG:root:(14, TERM → TERM · / FACTOR) => SCAN
+DEBUG:root:(0, ROOT → EXPR ·) => ATTACH
+DEBUG:root:(0, EXPR → EXPR · + TERM) => SCAN
+DEBUG:root:(0, EXPR → EXPR · - TERM) => SCAN
+DEBUG:root:Profile of work done: Counter({'PREDICT': 235, 'ATTACH': 70, 'SCAN': 18})
+36.991238210769474
+8.455324334921691
+NONE
+15.325693382592382
+50.201445719776004
