@@ -142,9 +142,9 @@ class EarleyChart:
         for rule in self.grammar.expansions(nonterminal):   # this looks into all possibple rules for the nonterminal (need to check if this has been precessed for efficiency)
             new_item = Item(rule, dot_position=0, start_position=position)   
             
-            # if (position, new_item.rule.lhs, new_item.rule.rhs)  not in self.check_duplicates:
-                # self.check_duplicates[(position, new_item.rule.lhs, new_item.rule.rhs)] = True
-            self.cols[position].push(new_item)
+            if (position, new_item.rule.lhs, new_item.rule.rhs)  not in self.check_duplicates:
+                self.check_duplicates[(position, new_item.rule.lhs, new_item.rule.rhs)] = True
+                self.cols[position].push(new_item)
             
             logging.debug(f"\tPredicted: {new_item} in column {position}")
             self.profile["PREDICT"] += 1
@@ -193,9 +193,9 @@ class EarleyChart:
                     # for rule in customer.rules:
                     # convert item to a node which we can update
                     # print(self.best_attached)
-                    # print('position', position)
-                    # print('customer: ' ,new_item)
-                    # pdb.set_trace()
+                    #print('customer: ' ,new_item)
+                    #print(position)
+                    #pdb.set_trace()
                     
                     # if position == 5:
                     #     pdb.set_trace()
@@ -230,13 +230,22 @@ class EarleyChart:
                 # remove the old one 
                 #del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
                 node_customer.dot_position = customer.dot_position
+                self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
             else:
                 node_customer = deepcopy(self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)])
                 
                 # remove the old one 
-                del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
+                #del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
                 node_customer.dot_position = customer.dot_position
                 self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
+        elif (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position) in self.tobe_attached:
+            if child.total_weight <  self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)].children[-1].total_weight:
+                        node_customer = self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)]
+                        node_customer.total_weight -= node_customer.children[-1].total_weight
+                        node_customer.children.pop()
+                        self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
+            else:
+                return None 
             # # handle a special case where the children position overlap but the new is not subset of the old child
             # if node_customer.children[-1].end_position > child.start_position and child.start_position != node_customer.children[-1].start_position:
             #     new_ch_end = node_customer.children[-1].end_position-(node_customer.children[0].end_position - child.start_position) -1
@@ -346,14 +355,14 @@ class EarleyChart:
         for child in node.children:
             node.child_dict[child.start_position] = (child, child.end_position)
 
-        # node.print_loc
+        node.print_loc
         for thing in node.rule.rhs:
             # pdb.set_trace()
             if not self.grammar.is_nonterminal(thing):
                 self.traverse_output += thing
                 node.print_loc += 1
             else:
-                # pdb.set_trace()
+           #     pdb.set_trace()
                 self.traverse(node.child_dict[node.print_loc][0], node.print_loc)
                 node.print_loc = node.child_dict[node.print_loc][1]
         

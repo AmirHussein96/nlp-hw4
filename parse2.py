@@ -116,6 +116,7 @@ class EarleyChart:
             logging.debug(f"Processing items in column {i}")
             self.check_processed ={}
             self.check_duplicates = {}
+            predicted_lhs = []
             while column:    # while agenda isn't empty
                 # if i == 5:
                 #      pdb.set_trace()
@@ -129,9 +130,11 @@ class EarleyChart:
                     logging.debug(f"{item} => ATTACH")
                     self._attach(item, i)   
                 elif self.grammar.is_nonterminal(next):
-                    # Predict the nonterminal after the dot
-                    logging.debug(f"{item} => PREDICT")
-                    self._predict(next, i)
+                    if next not in predicted_lhs:
+                        # Predict the nonterminal after the dot
+                        logging.debug(f"{item} => PREDICT")
+                        self._predict(next, i)
+                        predicted_lhs.append(next)
                 else:
                     # Try to scan the terminal after the dot
                     logging.debug(f"{item} => SCAN")
@@ -193,9 +196,9 @@ class EarleyChart:
                     # for rule in customer.rules:
                     # convert item to a node which we can update
                     # print(self.best_attached)
-                    # print('position', position)
-                    # print('customer: ' ,new_item)
-                    # pdb.set_trace()
+                    #print('customer: ' ,new_item)
+                    #print(position)
+                    #pdb.set_trace()
                     
                     # if position == 5:
                     #     pdb.set_trace()
@@ -230,13 +233,22 @@ class EarleyChart:
                 # remove the old one 
                 #del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
                 node_customer.dot_position = customer.dot_position
+                self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
             else:
                 node_customer = deepcopy(self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)])
                 
                 # remove the old one 
-                del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
+                #del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
                 node_customer.dot_position = customer.dot_position
                 self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
+        elif (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position) in self.tobe_attached:
+            if child.total_weight <  self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)].children[-1].total_weight:
+                        node_customer = self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)]
+                        node_customer.total_weight -= node_customer.children[-1].total_weight
+                        node_customer.children.pop()
+                        self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
+            else:
+                return None 
             # # handle a special case where the children position overlap but the new is not subset of the old child
             # if node_customer.children[-1].end_position > child.start_position and child.start_position != node_customer.children[-1].start_position:
             #     new_ch_end = node_customer.children[-1].end_position-(node_customer.children[0].end_position - child.start_position) -1
@@ -346,7 +358,7 @@ class EarleyChart:
         for child in node.children:
             node.child_dict[child.start_position] = (child, child.end_position)
 
-        node.print_loc
+        #node.print_loc
         for thing in node.rule.rhs:
             # pdb.set_trace()
             if not self.grammar.is_nonterminal(thing):
@@ -487,7 +499,19 @@ class Grammar:
         """Is symbol a nonterminal symbol?"""
         return symbol in self._expansions
 
-
+    def restrict_grammar(self, tokens):
+        """Restrict the grammar to just rules relevant to the sentence"""
+        for lhs, rule_list in self._expansions.items():
+            acceptable_rules=[]
+            for rule in rule_list:
+                for constituent in rule.rhs:
+                    if (not self.is_nonterminal(constituent)) and (constituent not in tokens):
+                        break                
+                    acceptable_rules.append(rule)
+                    break
+            self._expansions[lhs] = acceptable_rules
+            
+            
 # A dataclass is a class that provides some useful defaults for you. If you define
 # the data that the class should hold, it will automatically make things like an
 # initializer and an equality function.  This is just a shortcut.  
@@ -586,7 +610,7 @@ def main():
     args = parse_args()
     logging.basicConfig(level=args.verbose)  # Set logging level appropriately
    # pdb.set_trace()
-    grammar = Grammar(args.start_symbol, args.grammar)
+    # grammar = Grammar(args.start_symbol, args.grammar)
 
     with open(args.sentences) as f:
         for sentence in f.readlines():
@@ -595,6 +619,8 @@ def main():
                 # analyze the sentence
                 logging.debug("="*70)
                 logging.debug(f"Parsing sentence: {sentence}")
+                grammar = Grammar(args.start_symbol, args.grammar)
+                grammar.restrict_grammar(sentence.split())
                 chart = EarleyChart(sentence.split(), grammar, progress=args.progress)
                 # print the result
                 # print(
