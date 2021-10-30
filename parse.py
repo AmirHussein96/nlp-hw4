@@ -20,6 +20,7 @@ from typing import Counter as CounterType, Iterable, List, Optional, Dict, Tuple
 import math
 import pdb
 import os
+from copy import deepcopy
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments"""
@@ -76,9 +77,11 @@ class EarleyChart:
         self.tobe_attached = {} # dictionary of possible parents for attachment
         self.root = None
         self.cols: List[Agenda]
-        self._run_earley()    # run Earley's algorithm to construct self.cols
+        self.check_duplicates = {}
         self.traverse_output = "" # Don string for printing
-
+        self._run_earley()    # run Earley's algorithm to construct self.cols
+        
+        
 
     def accepted(self) -> bool:
         """Was the sentence accepted?
@@ -111,10 +114,16 @@ class EarleyChart:
                                    disable=not self.progress):
             logging.debug("")
             logging.debug(f"Processing items in column {i}")
-            
+            self.check_processed ={}
+            self.check_duplicates = {}
             while column:    # while agenda isn't empty
+                # if i == 5:
+                #      pdb.set_trace()
+                
                 item = column.pop()   # dequeue the next unprocessed item
                 next = item.next_symbol()
+                # print(item.rule)
+                # print(next)
                 if next is None:
                     # Attach this complete constituent to its customers
                     logging.debug(f"{item} => ATTACH")
@@ -131,8 +140,12 @@ class EarleyChart:
     def _predict(self, nonterminal: str, position: int) -> None:
         """Start looking for this nonterminal at the given position."""
         for rule in self.grammar.expansions(nonterminal):   # this looks into all possibple rules for the nonterminal (need to check if this has been precessed for efficiency)
-            new_item = Item(rule, dot_position=0, start_position=position)     
-            self.cols[position].push(new_item)
+            new_item = Item(rule, dot_position=0, start_position=position)   
+            
+            if (position, new_item.rule.lhs, new_item.rule.rhs)  not in self.check_duplicates:
+                self.check_duplicates[(position, new_item.rule.lhs, new_item.rule.rhs)] = True
+                self.cols[position].push(new_item)
+            
             logging.debug(f"\tPredicted: {new_item} in column {position}")
             self.profile["PREDICT"] += 1
 
@@ -140,33 +153,29 @@ class EarleyChart:
 
         """Attach the next word to this item that ends at position, 
         if it matches what this item is looking for next."""
-       # pdb.set_trace()
-        #print(item.next_symbol())
+        # pdb.set_trace()
+        # print(item.next_symbol())
         if position < len(self.tokens) and self.tokens[position] == item.next_symbol():
             new_item = item.with_dot_advanced()
             self.cols[position + 1].push(new_item)
             logging.debug(f"\tScanned to get: {new_item} in column {position+1}")
             self.profile["SCAN"] += 1
-
-            if  (new_item.start_position, str(new_item.rule)) in self.tobe_attached:
+            
+            if  (new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position-1) in self.tobe_attached:
                 # pdb.set_trace()
-                self.tobe_attached[(new_item.start_position, str(new_item.rule))] = self.tobe_attached[(new_item.start_position, str(new_item.rule))]
-                #del self.tobe_attached[(new_item.start_position, position, str(new_item.rule))]
-                self.tobe_attached[(new_item.start_position, str(new_item.rule))].dot_position = new_item.dot_position
+                updated_node = self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position-1)]
+                updated_node.dot_position = new_item.dot_position
+               # del self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position-1)]
+
+                self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position)] = updated_node
                 if new_item.dot_position == len(new_item.rule.rhs):
-                    node_item = self.tobe_attached[(new_item.start_position, str(new_item.rule))]
-                    self.best_attached[(node_item.name,node_item.start_position,position+1)] = node_item 
+                    self.best_attached[(updated_node.name,updated_node.start_position,position+1)] = updated_node 
+                #    del self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position)]
             elif new_item.dot_position == len(new_item.rule.rhs) and len(new_item.rule.rhs) == 1: # add the unary rules to the graph
-                    node_customer = Node(new_item,item.rule.lhs,position+1)
-                    self.best_attached[(node_customer.name,node_customer.start_position,position+1)] = node_customer 
+                    updated_node = Node(new_item,item.rule.lhs,position+1)
+                    self.best_attached[(updated_node.name,updated_node.start_position,position+1)] = updated_node 
 
-            # else:
-            #     node_item = Node(new_item,item.next_symbol(), position+1)
-            #     node_item.total_weight=0
-            #     node_item.weight=0
-            #     node_customer = Node(new_item,item.rule.lhs,position+1)
-            #     self.add_to_graph(node_item, node_customer, position, position+1)
-
+            
     def _attach(self, item: Item, position: int) -> None:
         """Attach this complete item to its customers in previous columns, advancing the
         customers' dots to create new items in this column.  (This operation is sometimes
@@ -179,78 +188,98 @@ class EarleyChart:
                 self.cols[position].push(new_item)
                 logging.debug(f"\tAttached to get: {new_item} in column {position}")
                 self.profile["ATTACH"] += 1
-                # for rule in customer.rules:
-                # convert item to a node which we can update
-                # print(self.best_attached)
-                # print('customer: ' ,customer)
-                # pdb.set_trace()
-                #if position==13 and customer.start_position==0:
-                 #   pdb.set_trace()
-                if (item.rule.lhs, item.start_position, position) not in self.best_attached:
-                    node_item = Node(item,item.rule.lhs, position)
-                    node_customer = self.get_parent(new_item, position,node_item)
-                else:
-                    if item.rule.weight < self.best_attached[(item.rule.lhs,item.start_position,position)].weight: # check the minimum weight
+                if customer not in self.check_processed:
+                    self.check_processed[customer]=True
+                    # for rule in customer.rules:
+                    # convert item to a node which we can update
+                    # print(self.best_attached)
+                    # print('position', position)
+                    # print('customer: ' ,new_item)
+                    # pdb.set_trace()
+                    
+                    # if position == 5:
+                    #     pdb.set_trace()
+                    if (item.rule.lhs, item.start_position, position) not in self.best_attached:
                         node_item = Node(item,item.rule.lhs, position)
-                        node_item.update_connections(self.best_attached[(item.rule.lhs,item.start_position,position)])
                         node_customer = self.get_parent(new_item, position,node_item)
+                    else:
+                        if item.rule.weight < self.best_attached[(item.rule.lhs,item.start_position,position)].weight: # check the minimum weight
+                            node_item = Node(item,item.rule.lhs, position)
+                            node_item.update_connections(self.best_attached[(item.rule.lhs,item.start_position,position)])
+                            
+                            node_customer = self.get_parent(new_item, position,node_item)
 
-                    else:
-                        node_item = self.best_attached[(item.rule.lhs,item.start_position,position)] 
-                        node_customer = self.get_parent(new_item, position,node_item)
-                
-                  
-             
-                self.add_to_graph(node_item, node_customer, mid, position)
-                #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
-    def get_parent(self, customer, end_position, child):
-        if customer.dot_position < len(customer.rule.rhs) and (customer.start_position,str(customer.rule)) not in self.tobe_attached:
-            node_customer = Node(customer,customer.rule.lhs, None)
-            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
-        elif (customer.start_position, str(customer.rule)) not in self.tobe_attached:
-            node_customer = Node(customer,customer.rule.lhs, None)
-            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
-            return node_customer
-        elif (customer.start_position, str(customer.rule)) in self.tobe_attached:
-            node_customer = self.tobe_attached[(customer.start_position, str(customer.rule))]
-            node_customer.dot_position = customer.dot_position
-            if node_customer.children[0].end_position is not None:
-                if node_customer.children[0].end_position > child.start_position and child.start_position != node_customer.children[0].start_position:
-                    new_ch_end = node_customer.children[0].end_position-(node_customer.children[0].end_position - child.start_position) -1
-                   # detach the child
-                   # print(self.best_attached)
-                   # print(node_customer.start_position, node_customer.children[0].end_position, node_customer.rule)
-                   # pdb.set_trace()
-                    if (node_customer.name,node_customer.start_position,new_ch_end) in self.best_attached:
-                        node_customer.total_weight = node_customer.total_weight - node_customer.children[0].total_weight
-                        node_customer.children.pop()
-    
-                        node_customer.children.append(self.best_attached[(node_customer.name,node_customer.start_position,new_ch_end)])
-                        node_customer.total_weight = node_customer.total_weight + node_customer.children[0].total_weight
-    
-                else:
-                    if child.end_position is not None:
-                        if child.start_position == node_customer.children[0].start_position and child.end_position > node_customer.children[0].end_position:  # this means overlap
-                            node_customer.total_weight-= node_customer.children[0].total_weight
-                            node_customer.children.pop()
-                            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
                         else:
-                            node_customer.dot_position = customer.dot_position
-                            self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
-                    else:
-                        node_customer.dot_position = customer.dot_position
-                        self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                            node_item = self.best_attached[(item.rule.lhs,item.start_position,position)] 
+                            node_customer = self.get_parent(new_item, position,node_item)
+                    
+                    
+                    if (node_item not in node_customer.children) and (node_item.end_position != None):
+                        self.add_to_graph(node_item, node_customer, mid, position)
+                    #     self.best_attached[(customer,mid,position)]={new_item.rule.weight:new_item} # key of triplet (X,I,J) and the coresponding cost to create it 
+        
+    def get_parent(self, customer, end_position, child):
+        if (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1) not in self.tobe_attached:
+            node_customer = Node(customer,customer.rule.lhs, customer.dot_position)
+            self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
+        elif (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1) in self.tobe_attached:
+            # if the parent is in the temporary dict update its position
+            if customer.dot_position == len(customer.rule.rhs):
+                node_customer = deepcopy(self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)])
+                
+                # remove the old one 
+                #del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
+                node_customer.dot_position = customer.dot_position
             else:
-                if child.start_position == node_customer.children[0].start_position: # and child.end_position > node_customer.children[0].end_position:  # this means overlap
-                    node_customer.total_weight-= node_customer.children[0].total_weight
-                    node_customer.children.pop()
-                    self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
-                else:
-                    node_customer.dot_position = customer.dot_position
-                    self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                node_customer = deepcopy(self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)])
+                
+                # remove the old one 
+                del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
+                node_customer.dot_position = customer.dot_position
+                self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
+            # # handle a special case where the children position overlap but the new is not subset of the old child
+            # if node_customer.children[-1].end_position > child.start_position and child.start_position != node_customer.children[-1].start_position:
+            #     new_ch_end = node_customer.children[-1].end_position-(node_customer.children[0].end_position - child.start_position) -1
+            #     # detach the child
+            #     # print(self.best_attached)
+            #     # print(node_customer.start_position, node_customer.children[0].end_position, node_customer.rule)
+            #     # pdb.set_trace()
+            #     if (node_customer.name,node_customer.start_position,new_ch_end) in self.best_attached:
+            #         node_customer.total_weight = node_customer.total_weight - node_customer.children[0].total_weight
+            #         node_customer.children.pop()
+
+            #         node_customer.children.append(self.best_attached[(node_customer.name,node_customer.start_position,new_ch_end)])
+            #         node_customer.total_weight = node_customer.total_weight + node_customer.children[0].total_weight
+    
+                
+                
+            #     elif child.start_position == node_customer.children[0].start_position and child.end_position > node_customer.children[0].end_position:  # this means overlap
+            #         node_customer.total_weight-= node_customer.children[0].total_weight
+            #         node_customer.children.pop()
+            #         self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+            #     else:
+            #         node_customer.dot_position = customer.dot_position
+            #         self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+            # else:
+            #     if child.start_position == node_customer.children[0].start_position: # and child.end_position > node_customer.children[0].end_position:  # this means overlap
+            #         node_customer.total_weight-= node_customer.children[0].total_weight
+                #     node_customer.children.pop()
+                #     self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
+                # else:
+                #     node_customer.dot_position = customer.dot_position
+                #     self.tobe_attached[(customer.start_position, str(customer.rule))] = node_customer
         return node_customer
     
 
+    # def clean_root(self, root):
+    #     if (root.name,root.start_position,root.end_position) in self.best_attached:
+    #         del self.best_attached[(root.name,root.start_position,root.end_position)]
+    #         for child in root.children:
+    #             self.clean_root(child)
+    #     else:
+    #         return
+        
+       
 
     def add_to_graph(self, child, parent, startpos, endpos):
       #  if parent.name == 'ROOT':
@@ -280,37 +309,35 @@ class EarleyChart:
             elif (child.name, startpos, endpos) in self.best_attached:
                 if child.weight < self.best_attached[(child.name,startpos,endpos)].weight: # check the minimum weight
                     self.best_attached[(child.name,startpos,endpos)] = child
-                else:
-                    child = self.best_attached[(child.name,startpos,endpos)]
+             #   else:
+             #       child = self.best_attached[(child.name,startpos,endpos)]
                #child.parent = parent 
                 parent.total_weight+= child.total_weight
                 parent.add_children(child)  
                               
         if parent.dot_position == len(parent.rule.rhs): # if the dot reached the end 
-           
+            # if parent.name == self.grammar.start_symbol and parent.end_position < len(self.tokens):
+            #     self.clean_root(parent)
+
             if (parent.name,parent.start_position , endpos) not in self.best_attached:
                # parent.total_weight+= parent.weight  # we start the total weight with the node rule weight, so no need to add again
                 parent.end_position = endpos
               #  pdb.set_trace()
                 self.best_attached[(parent.name,parent.start_position,endpos)] = parent 
-                del self.tobe_attached[(parent.start_position, str(parent.rule))] # remove from temporary dict
             elif (parent.name,parent.start_position , endpos) in self.best_attached:
                 if parent.weight < self.best_attached[(parent.name,parent.start_position,endpos)].weight: # check the minimum weight
                    # parent.total_weight+= parent.weight
-                    self.best_attached[(parent.name,parent.start_position,endpos)] = parent
-                else:
-                    parent = self.best_attached[(parent.name,parent.start_position,endpos)]
-                    
-            if (parent.name,parent.start_position,endpos) in self.tobe_attached:
-                del self.tobe_attached[(parent.start_position,str(parent.rule))] # remove from temporary dict
+                    self.best_attached[(parent.name,parent.start_position,endpos)] = parent 
+
+            if (parent.start_position, parent.rule.lhs, parent.rule.rhs, parent.dot_position) in self.tobe_attached:
+                del self.tobe_attached[(parent.start_position, parent.rule.lhs, parent.rule.rhs, parent.dot_position)] # remove from temporary dict
                 
         if parent.name == self.grammar.start_symbol and len(self.tokens) == parent.end_position:
             if parent.total_weight < self.min_parse_weight:
                 self.min_parse_weight = parent.total_weight
                # pdb.set_trace()
-                self.root = parent                  
-                
-    
+                self.root = parent  
+
     def traverse(self, node, position):
         if len(self.traverse_output) > 0 and self.traverse_output[-1] == ")":
             self.traverse_output += " "
