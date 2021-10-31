@@ -165,7 +165,7 @@ class EarleyChart:
                 # pdb.set_trace()
                 updated_node = self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position-1)]
                 updated_node.dot_position = new_item.dot_position
-               # del self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position-1)]
+                del self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position-1)]
 
                 self.tobe_attached[(new_item.start_position, new_item.rule.lhs, new_item.rule.rhs, new_item.dot_position)] = updated_node
                 if new_item.dot_position == len(new_item.rule.rhs):
@@ -228,14 +228,14 @@ class EarleyChart:
                 node_customer = deepcopy(self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)])
                 
                 # remove the old one 
-                #del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
+               # del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
                 node_customer.dot_position = customer.dot_position
                 self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
             else:
                 node_customer = deepcopy(self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)])
                 
                 # remove the old one 
-                #del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
+               # del self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position-1)]
                 node_customer.dot_position = customer.dot_position
                 self.tobe_attached[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)] = node_customer
         elif (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position) in self.tobe_attached:
@@ -318,8 +318,8 @@ class EarleyChart:
             elif (child.name, startpos, endpos) in self.best_attached:
                 if child.weight < self.best_attached[(child.name,startpos,endpos)].weight: # check the minimum weight
                     self.best_attached[(child.name,startpos,endpos)] = child
-             #   else:
-             #       child = self.best_attached[(child.name,startpos,endpos)]
+                else:
+                    child = self.best_attached[(child.name,startpos,endpos)]
                #child.parent = parent 
                 parent.total_weight+= child.total_weight
                 parent.add_children(child)  
