@@ -230,7 +230,7 @@ class EarleyChart:
     def get_parent(self, customer, end_position, child):
         # if (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position) == (0, 'ADVP', ('ADVP',), 1):
         #     pdb.set_trace()
-        if (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position) in self.check_processed and end_position > 1:
+        if (customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position):
            
             # if self.check_processed[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)].children:
             #     if child.total_weight <  self.check_processed[(customer.start_position,customer.rule.lhs, customer.rule.rhs, customer.dot_position)].children[-1].total_weight:
