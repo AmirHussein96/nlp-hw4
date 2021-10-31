@@ -620,7 +620,7 @@ def main():
                     print(chart.root.total_weight)
                 else:
                     print('NONE')
-                print(time.time - tic)
+                print(time.time() - tic)
 
 
 if __name__ == "__main__":
