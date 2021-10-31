@@ -1,8 +1,4 @@
-(ROOT (S (NP (NPR (NNP John))
-             (VBZ is))
-         (VP (JJ happy))
-         (PUNC. .)))
-49.736699914321534
+(ROOT (S (NP (NPR (NNP John))(VBZ is))(VP (JJ happy))(PUNC. .)))
 NONE
 NONE
 NONE
